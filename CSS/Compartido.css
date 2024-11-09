@@ -1,0 +1,36 @@
+.navbar {
+    background-color: black;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.footer {
+    margin-top: auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0; 
+}
+
+.footer .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.social-links {
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: white; 
+    margin: 0 10px; 
+    text-decoration: none; 
+}

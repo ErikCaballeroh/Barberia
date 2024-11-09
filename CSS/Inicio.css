@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.carousel-item img {
+    height: 600px; 
+    object-fit: cover; 
+    width: 100%; 
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 100%; 
+    background-color: rgba(255, 255, 255, 0.507); 
+    color: #000; 
+    text-align: center;
+    padding: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.work-section {
+    padding: 2rem;
+}
+.work-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
