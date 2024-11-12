@@ -4,112 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citas</title>
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/Compartido.css">
-    <link rel="stylesheet" href="CSS/citas.css">
+    <link rel="stylesheet" href="../../../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../CSS/Compartido.css">
+    <link rel="stylesheet" href="../../../CSS/citas.cs">
 </head>
 <body>
 
     <header>
-        <!--Barra de navegacion--> 
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <!--Barra de navegacion-->
+        <nav class="navbar navbar-expand-lg navbar-dark  py-2">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="IMG/LOGO.png" alt="Logo" height="40"  width="100" class="d-inline-block align-top">
+                    <img src="../../../img/logo.png" alt="Logo" height="40" width="100" class="d-inline-block align-top">
                     Rivera Barber Shop
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="sobre Nosotros.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Servicios.html">Servicios</a>
+                            <a class="nav-link" href="pages/services/services.html">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contactanos.html">Contáctanos</a>
+                            <a class="nav-link" href="pages/contact/contact.html">Contáctanos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="sing up.html">Sign Up</a>
+                            <a class="btn btn-outline-light" href="pages/sign-up/sign-up.html">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-light" href="sing in.html">Sign In</a>
+                            <a class="btn btn-light" href="pages/sign-in/sign-in.html">Sign In</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-<main>
-        <div class="container my-5">
-            <div class="row ">
-                <div class="col-12 col-md-6 mb-4">
-                        <h1 >Citas Disponibles</h1>
 
-                        <p id="mensajeSinCita" style="display: none;">Citas no disponibles</p>
-
-                        <div id="cuadroCita" class="cuadro" style="display: none;">
-                        <h2>Detalles de tu Cita</h2>
+    <div class="d-flex flex-column min-vh-100">
+        <main class="flex-grow-1">
+            <div class="container my-5">
+                <div class="row justify-content-between g-4">
+                    <!-- Citas Disponibles -->
+                    <div class="col-12 col-md-6">
+                        <h1>Citas Disponibles</h1>
+                        <p id="mensajeSinCita" class="d-none">Citas no disponibles</p>
+                        <div id="cuadroCita" class="card d-none mb-4 p-3 shadow-sm">
+                            <h2>Detalles de tu Cita</h2>
                             <p><strong>Fecha:</strong> <span id="fecha"></span></p>
                             <p><strong>Hora:</strong> <span id="hora"></span></p>
                             <p><strong>Sucursal:</strong> <span id="sucursal"></span></p>
-                        <button >Cancelar Cita</button>
+                            <button class="btn btn-danger">Cancelar Cita</button>
                         </div>
                     </div>
-                    
-                     <div class="col-12 col-md-6">
-                        <form class="formulario">
-                                <fieldset>
-                                    <legend class="text-center"><h1>Agendar tu cita</h1></legend>
-                                    <div class="form-group mb-3">
-                                        <label for="servicio">Servicio:</label>
-                                        <select class="form-control" id="servicio" required>
-                                            <option value="">Seleccione un servicio</option>
-                                        
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="sucursal">Sucursal:</label>
-                                        <select class="form-control" id="sucursal" required>
-                                            <option value="">Seleccione una sucursal</option>
-                                            
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="fecha">Fecha:</label>
-                                        <input type="date" class="form-control" id="fecha" required>
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label for="hora">Hora:</label>
-                                        <input type="time" class="form-control" id="hora" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Agendar</button>
-                                </fieldset>
+    
+                    <!-- Formulario para Agendar Cita -->
+                    <div class="col-12 col-md-6">
+                        <form class="bg-white p-4 rounded shadow-sm">
+                            <fieldset>
+                                <legend class="text-center"><h1>Agendar tu cita</h1></legend>
+                                <div class="mb-3">
+                                    <label for="servicio" class="form-label">Servicio:</label>
+                                    <select class="form-select" id="servicio" required>
+                                        <option value="">Seleccione un servicio</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sucursal" class="form-label">Sucursal:</label>
+                                    <select class="form-select" id="sucursal" required>
+                                        <option value="">Seleccione una sucursal</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="form-label">Fecha:</label>
+                                    <input type="date" class="form-control" id="fecha" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hora" class="form-label">Hora:</label>
+                                    <input type="time" class="form-control" id="hora" required>
+                                </div>
+                                <button type="submit" class="btn btn-dark w-100">Agendar</button>
+                            </fieldset>
                         </form>
                     </div>
                 </div>
-        </div>
-
-
-
-
-    </main>
-
-    <footer class="footer">
-        <div class="container text-center">
-            <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
-            <div class="social-links">
-                <a href="https://instagram.com" target="_blank">Instagram</a> |
-                <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a href="https://maps.google.com" target="_blank">Google Maps</a>
             </div>
-            <p class="footer-copyright">© 2024 Rivera Barber Shop</p>
-        </div>
-    </footer>
+        </main>
+    
+        <!-- Footer -->
+        <footer class="footer bg-dark text-white text-center py-3 mt-auto">
+            <div class="container">
+                <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
+                <div class="mb-3">
+                    <a href="https://instagram.com" target="_blank" class="text-white">Instagram</a> |
+                    <a href="https://facebook.com" target="_blank" class="text-white">Facebook</a> |
+                    <a href="https://maps.google.com" target="_blank" class="text-white">Google Maps</a>
+                </div>
+                <p class="mb-0">© 2024 Rivera Barber Shop</p>
+            </div>
+        </footer>
+    </div>
+    
     <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src=""></script>
 </body>
 </html>
