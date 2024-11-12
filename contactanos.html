@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactanos</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/Compartido.css">
+</head>
+
+<body>
+  <header>
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-dark  py-2 $black">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.png" alt="Logo" height="40" width="100" class="d-inline-block align-top">
+          Rivera Barber Shop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="pages/about/about.html">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/services/services.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/contact/contact.html">Contáctanos</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-light" href="pages/sign-up/sign-up.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-light" href="pages/sign-in/sign-in.html">Sign In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <!-- Sección de Contacto -->
+      <div class="col-md-6">
+        <h2 class="mb-4">Contáctanos</h2>
+
+        <!-- Acordeón de Preguntas -->
+        <div class="accordion mb-4" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                ¿Aceptan tarjeta?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sí, aceptamos tarjetas de crédito y débito.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                ¿Necesito hacer una cita previa o aceptan clientes sin cita?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Aceptamos clientes sin cita, pero recomendamos hacer una cita para evitar esperas.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón de WhatsApp -->
+        <a href="https://wa.me/1234567890" target="_blank" class="btn btn-success d-flex align-items-center">
+          <img src="IMG/WhatsApp_icon.png" alt="WhatsApp" style="width: 20px; margin-right: 8px;">
+          WhatsApp
+        </a>
+      </div>
+
+      <!-- Imagen -->
+      <div class="col-md-6 text-center">
+        <img src="IMG/barb_cont.jpg" alt="Barbería" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+
+  <!--Pie de pagina-->
+  <footer class="footer bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+      <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
+      <div class="social-links mb-3">
+        <a href="https://instagram.com" target="_blank">Instagram</a> |
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a href="https://maps.google.com" target="_blank">Google Maps</a>
+      </div>
+      <p class="mb-0">© 2024 Rivera Barber Shop</p>
+    </div>
+  </footer>
+
+  <script src="JS/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+.about-image, .branch-image {
+  border-radius: 15px;
+  max-width: 100%;
+  height: auto;
+}
+.icon-text {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.icon-text img {
+  width: 50px;
+  margin-right: 10px;
+}
