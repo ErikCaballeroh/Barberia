@@ -17,8 +17,8 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
-                <a class="navbar-brand" href="/index.html">
-                    <img src="IMG/LOGO.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
+                <a class="navbar-brand" href="/barberia/index.php">
+                    <img src="/barberia/IMG/LOGO.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
                     <span class="d-flex align-items-center col-6">
                         Rivera Barber Shop
                     </span>
@@ -48,15 +48,16 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                         <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
                                     </li>
                                 
-                                //si si existe haz lo siguiente
+                                <!--si existe-->
                         <?php else: ?>
                                 <div class="dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['usuario']; ?>
+                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
+                                    <img src="3" alt="Logo"  class="d-inline-block align-top col-6">
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.html">Agendar cita</a></li>
-                                    <li><a class="dropdown-item" href="#">cerrar sesion</a></li>
+                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
                                 </ul>
                                 </div>
                         <?php endif; ?>
@@ -65,26 +66,28 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </nav>
     </header>
-                           <!--modal confirmar el cierre de sesion-->
 
            <!-- Modal de Confirmación de Cerrar sesión -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Estás seguro de que deseas cerrar sesión?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <a href="logout.php" class="btn btn-danger">Cerrar sesión</a>
-                </div>
+           <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas cerrar sesión?
+            </div>
+            <div class="modal-footer">
+                <!-- Botón Cancelar para cerrar el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                
+                <!-- Enlace para cerrar sesión que llevará al archivo logout.php -->
+                <a href="/barberia/php/logout.php" class="btn btn-danger">Cerrar sesión</a>
             </div>
         </div>
     </div>
+</div>
 
     <main>
 
@@ -174,5 +177,12 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
         </div>
     </footer>
     <script src="/barberia/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+    var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    logoutModal.show();
+    });
+    </script>
 </body>
 </html>

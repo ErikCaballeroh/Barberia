@@ -6,46 +6,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citas</title>
-    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="/CSS/Compartido.css">
-    <link rel="stylesheet" href="/CSS/citas.cs">
+    <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
+    <link rel="stylesheet" href="/barberia/CSS/citas.cs">
 </head>
 <body>
 
-    <header>
+<header>
         <!--Barra de navegacion-->
-        <nav class="navbar navbar-expand-lg navbar-dark  py-2">
+        <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
-                <a class="navbar-brand" href="/index.html">
-                    <img src="/img/logo.png"  alt="Logo" height="40" width="100" class="d-inline-block align-top">
-                    Rivera Barber Shop
+                <a class="navbar-brand" href="/barberia /index.php">
+                    <img src="/barberia/IMG/LOGO.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
+                    <span class="d-flex align-items-center col-6">
+                        Rivera Barber Shop
+                    </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/services/services.html">Servicios</a>
+                            <a class="nav-link" href="/barberia/pages/services/services.html">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
+                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-light" href="/pages/sign-up/sign-up.html">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light" href="/pages/sign-in/sign-in.html">Sign In</a>
-                        </li>
+                        <?php
+                        //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up //
+                        if(!isset($_SESSION["usuario"])): ?>
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
+                                    </li>
+                                
+                                <!--si existe-->
+                        <?php else: ?>
+                                <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
+                                    <img src="3" alt="Logo"  class="d-inline-block align-top col-6">
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
+                                </ul>
+                                </div>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+           <!-- Modal de Confirmación de Cerrar sesión -->
+           <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas cerrar sesión?
+            </div>
+            <div class="modal-footer">
+                <!-- Botón Cancelar para cerrar el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                
+                <!-- Enlace para cerrar sesión que llevará al archivo logout.php -->
+                <a href="/barberia/php/logout.php" class="btn btn-danger">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
@@ -112,6 +153,11 @@
     </div>
     
     <script src="JS/bootstrap.bundle.min.js"></script>
-    <script src=""></script>
+    <script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+    var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    logoutModal.show();
+    });
+    </script>
 </body>
 </html>
