@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Citas</title>
+  <title>Configuracion de contacto</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/Compartido.css">
   <link rel="stylesheet" href="/css/Inicio.css">
@@ -50,23 +50,31 @@
   </header>
 
   <main class="container py-5">
+    <h2 class="fa-1 fw-bold mb-3">
+      Establecer horario
+    </h2>
+    <form class="form row gap-5">
+      <section class="col-4 d-flex flex-column">
+        <div class="mb-3 row">
+          <label for="whatsapp" class="form-label fst-italic">Numero de WhatsApp</label>
+          <input type="text" name="whatsapp" class="form-control py-2 border border-dark"
+            placeholder='Ejemplo. 8164958564'>
+        </div>
 
-    <table id="myTable" class="table">
-      <thead>
-        <tr>
-          <th>Usuario</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Servicio</th>
-        </tr>
-      </thead>
-    </table>
+        <div class="mb-3 row">
+          <label for="maps" class="form-label fst-italic">Enlace de Google Maps</label>
+          <input type="text" name="maps" class="form-control py-2 border border-dark"
+            placeholder='https://maps.app.goo.gl/Hfp4Q6Angsz9X9aa9'>
+        </div>
 
+        <div class="row mt-4">
+          <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
+        </div>
+      </section>
+    </form>
   </main>
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="/js/jquery-3.7.1.min.js"></script>
-  <script src="/js/datatables.min.js"></script>
-  <script src="appointments_table.js"></script>
 </body>
 
 </html>
