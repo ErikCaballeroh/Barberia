@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sing UP</title>
-        <link href="/BARBERIA/CSS/bootstrap.min.css" rel="stylesheet">
+        <link href="/barberia/CSS/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <main>
@@ -17,7 +17,7 @@
                         <div class="logo text-center mb-4">
                         <img src="../../IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
                         </div>
-                        <form action="../../php/registrar.php" method="POST">
+                        <form action="/barberia/php/registrar.php" method="POST">
                             <fieldset>
                                 <legend class="text-center mb-4">Sign UP</legend>
                                 <div class="mb-3">
@@ -46,6 +46,6 @@
                 </div>
             </div>
         </main>
-        <script src="/BARBERIA/JS/bootstrap.bundle.min.js"></script>
+        <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
     </body>
     </html>

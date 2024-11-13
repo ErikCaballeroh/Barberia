@@ -48,15 +48,17 @@ if (mysqli_num_rows($verificar_usuario) > 0) {
             values('$id_role','$user', '$correo', '$contrasena_cifrada')";
 
 $ejecutar = mysqli_query($conexion, $query);
-exit;
+
 //validar que se registro
 if ($ejecutar) {
 
     echo' <script>alert("usuario alamacenado exitosamente");
-   window.location = "barberia/pages/sign-in/sign-in.php";
+   window.location = "/barberia/index.php";
     </script>';
+    exit;
 } else {
     echo "Error al registrar el usuario: " . mysqli_error($conexion);
+    exit;
 }   
 }else{
     echo'<script>alert("Contraseña no coincide");</script>';
