@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/Compartido.css">
+  <link rel="stylesheet" href="/css/Inicio.css">
+  <link rel="stylesheet" href="/css/datatables.min.css">
+</head>
+
+<body>
+  <header>
+    <!--Barra de navegacion-->
+    <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
+      <div class="container">
+        <a class="navbar-brand row" href="/index.html">
+          <img src="/img/logo.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
+          <span class="d-flex align-items-center col-6">
+            Rivera Barber Shop
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-3">
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/about/about.html">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/services/services.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-light mx-1" href="/pages/sign-up/sign-up.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-light mx-1" href="/pages/sign-in/sign-in.html">Sign In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-5">
+    <h2 class="fa-1 fw-bold mb-3">
+      Establecer horario
+    </h2>
+    <form class="form row gap-5">
+      <section class="col-4 d-flex flex-column">
+        <div class="mb-3 row">
+          <label for="time" class="form-label fst-italic">Hora de apertura</label>
+          <select name="time" class="form-select py-2 border border-dark">
+            <option value="" default>Selecciona una hora</option>
+          </select>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="time" class="form-label fst-italic">Hora de apertura</label>
+          <input type="number" name="time" class="form-control py-2 border border-dark"
+            placeholder='Numero de horas ej. "3"'>
+        </div>
+
+        <div class="row mt-auto">
+          <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
+        </div>
+      </section>
+
+      <section class="col-6 ps-4">
+        <label for="time" class="form-label fst-italic mb-3">Dias de servicio</label>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="domingo" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="domingo">
+            Domingo
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="lunes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="lunes">
+            Lunes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="martes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="martes">
+            Martes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="miercoles" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="miercoles">
+            Miercoles
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="jueves" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="jueves">
+            Jueves
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="viernes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="viernes">
+            Viernes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="sabado" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="sabado">
+            Sabado
+          </label>
+        </div>
+      </section>
+    </form>
+  </main>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/jquery-3.7.1.min.js"></script>
+</body>
+
+</html>
