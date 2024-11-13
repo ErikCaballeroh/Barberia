@@ -4,6 +4,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +13,15 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <link rel="stylesheet" href="/barberia/css/Compartido.css">
     <link rel="stylesheet" href="/barberia/css/Inicio.css">
 </head>
+
 <body>
     <header>
         <!--Barra de navegacion-->
+        <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
-                <a class="navbar-brand" href="/index.html">
-                    <img src="IMG/LOGO.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
+                <a class="navbar-brand row" href="/index.html">
+                    <img src="/img/logo.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
                     <span class="d-flex align-items-center col-6">
                         Rivera Barber Shop
                     </span>
@@ -30,44 +33,29 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link text-white" href="/pages/about/about.html">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item text-white">
+                            <a class="nav-link" href="/pages/services/services.html">Servicios</a>
+                        </li>
+                        <li class="nav-item text-white">
+                            <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
+                        </li>
+                        <li class="nav-item text-white">
+                            <a class="btn btn-outline-light mx-1" href="/pages/sign-up/sign-up.html">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/barberia/pages/services/services.html">Servicios</a>
+                            <a class="btn btn-light mx-1" href="/pages/sign-in/sign-in.html">Sign In</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
-                        </li>
-                        <?php
-                        //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up //
-                        if(!isset($_SESSION["usuario"])): ?>
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
-                                    </li>
-                                
-                                //si si existe haz lo siguiente
-                        <?php else: ?>
-                                <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['usuario']; ?>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.html">Agendar cita</a></li>
-                                    <li><a class="dropdown-item" href="#">cerrar sesion</a></li>
-                                </ul>
-                                </div>
-                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-                           <!--modal confirmar el cierre de sesion-->
+    </header>
+    <!--modal confirmar el cierre de sesion-->
 
-           <!-- Modal de Confirmación de Cerrar sesión -->
+    <!-- Modal de Confirmación de Cerrar sesión -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -175,4 +163,5 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     </footer>
     <script src="/barberia/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios</title>
+  <title>Estadisticas</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/Compartido.css">
   <link rel="stylesheet" href="/css/Inicio.css">
@@ -13,7 +13,6 @@
 
 <body>
   <header>
-    <!--Barra de navegacion-->
     <!--Barra de navegacion-->
     <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
       <div class="container">
@@ -49,26 +48,41 @@
       </div>
     </nav>
   </header>
-  </header>
 
   <main class="container py-5">
 
-    <table id="myTable" class="table">
-      <thead>
-        <tr>
-          <th>Servicio</th>
-          <th>Descripcion</th>
-          <th>Precio</th>
-          <th>Categoria</th>
-        </tr>
-      </thead>
-    </table>
+    <section class="nav nav-tabs" id="chart-tabs">
+      <li class="nav-item">
+        <button class="nav-link active text-dark" id="most-saled-tab" data-bs-toggle="tab" data-bs-target="#most-saled"
+          type="button" role="tab" aria-controls="most-saled" aria-selected="true">Más vendidos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link text-dark" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments"
+          type="button" role="tab" aria-controls="appointments" aria-selected="false">Citas por día</button>
+      </li>
+    </section>
+
+    <section class="tab-content" id="myTabContent">
+      <article class="tab-pane fade show active p-4" id="most-saled" role="tabpanel" aria-labelledby="most-saled-tab">
+        <div id="sales-chart" style="width: 1000px; height:500px;">
+
+        </div>
+      </article>
+      <article class="tab-pane fade p-4" id="appointments" role="tabpanel" aria-labelledby="appointments-tab">
+        <div id="appointments-chart" style="width: 1000px; height:500px;">
+
+        </div>
+      </article>
+    </section>
+
 
   </main>
+
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="/js/jquery-3.7.1.min.js"></script>
-  <script src="/js/datatables.min.js"></script>
-  <script src="services_table.js"></script>
+  <script src="/js/echarts.min.js"></script>
+  <script src="sales-chart.js"></script>
+  <script src="appointments-chart.js"></script>
 </body>
 
 </html>

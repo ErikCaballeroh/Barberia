@@ -1,14 +1,17 @@
 .navbar {
     background-color: black;
 }
-.navbar-brand, .nav-link {
+
+.navbar-brand {
     color: white !important;
     font-size: 16px;
 }
+
 .footer-title {
     font-size: 1.2em;
     font-weight: bold;
 }
+
 .social-links a {
     color: white;
     margin: 0 10px;
