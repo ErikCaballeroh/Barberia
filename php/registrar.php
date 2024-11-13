@@ -57,10 +57,10 @@ if ($ejecutar) {
     </script>';
 } else {
     echo "Error al registrar el usuario: " . mysqli_error($conexion);
-}
+}   
 }else{
     echo'<script>alert("Contraseña no coincide");</script>';
-    exit;
+    
 }
     // Cerrar conexión
     mysqli_close($conexion);

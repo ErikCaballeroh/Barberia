@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/Compartido.css">
-    <link rel="stylesheet" href="css/Inicio.css">
+    <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/barberia/css/Compartido.css">
+    <link rel="stylesheet" href="/barberia/css/Inicio.css">
 </head>
 <body>
     <header>
@@ -26,19 +26,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/services/services.html">Servicios</a>
+                            <a class="nav-link" href="/barberia/pages/services/services.html">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
+                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light mx-1" href="/pages/sign-up/sign-up.php">Sign Up</a>
+                            <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-light mx-1" href="/pages/sign-in/sign-in.html">Sign In</a>
+                            <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
                         </li>
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="IMG/carrusel.png" class="d-block w-100" alt="..."
+                    <img src="/barberia/IMG/carrusel.png" class="d-block w-100" alt="..."
                         style="height: 600px; object-fit: cover;">
                     <div
                         class="carousel-caption d-flex align-items-center justify-content-center bg-light bg-opacity-50">
@@ -72,12 +72,12 @@
                 </div>
 
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/IMG/carrusel-2.png" class="d-block w-100" alt="..."
+                    <img src="/barberia/IMG/carrusel-2.png" class="d-block w-100" alt="..."
                         style="height: 600px; object-fit: cover;">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="IMG/carrusel-3.png" class="d-block w-100" alt="..."
+                    <img src="/barberia/IMG/carrusel-3.png" class="d-block w-100" alt="..."
                         style="height: 600px; object-fit: cover;">
                 </div>
             </div>
@@ -100,19 +100,19 @@
             <div class="d-flex justify-content-center">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="img/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
+                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="img/trabajo-2.png" class="img-thumbnail" alt="Trabajo 2">
+                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="img/trabajo-3.png" class="img-thumbnail" alt="Trabajo 3">
+                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="img/trabajo-4.png" class="img-thumbnail" alt="Trabajo 4">
+                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="img/trabajo-5.png" class="img-thumbnail" alt="Trabajo 5">
+                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5">
                     </div>
                 </div>
             </div>
@@ -129,6 +129,6 @@
             <p class="mb-0">© 2024 Rivera Barber Shop</p>
         </div>
     </footer>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/barberia/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
