@@ -1,7 +1,6 @@
 <?php
 session_start(); // Iniciar la sesión para acceder a las variables de sesión
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +14,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
 </head>
 
 <body>
-    <header>
-        <!--Barra de navegacion-->
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -36,22 +34,13 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                             <a class="nav-link text-white" href="/pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item text-white">
-                            <a class="nav-link" href="/pages/services/services.html">Servicios</a>
+                            <a class="nav-link" href="/barberia/pages/services/services.html">Servicios</a>
                         </li>
                         <li class="nav-item text-white">
                             <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="btn btn-outline-light mx-1" href="/pages/sign-up/sign-up.html">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light mx-1" href="/pages/sign-in/sign-in.html">Sign In</a>
-                        </li>
-                        <<<<<<< HEAD=======<li class="nav-item">
-                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
-                            </li>
                             <?php
-                            //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up //
+                            //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
                             if (!isset($_SESSION["usuario"])): ?>
                                 <li class="nav-item">
                                     <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
@@ -73,33 +62,11 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                     </ul>
                                 </div>
                             <?php endif; ?>
-                            >>>>>>> e29365da6f34ddb3f5a0c6a9bc1fcf7b77db1f36
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <<<<<<< HEAD
-        </header>
-        <!--modal confirmar el cierre de sesion-->
-
-        <!-- Modal de Confirmación de Cerrar sesión -->
-        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Estás seguro de que deseas cerrar sesión?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <a href="logout.php" class="btn btn-danger">Cerrar sesión</a>
-                    </div>
-                    =======
-
                     <!-- Modal de Confirmación de Cerrar sesión -->
                     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -117,14 +84,12 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
 
                                     <!-- Enlace para cerrar sesión que llevará al archivo logout.php -->
                                     <a href="/barberia/php/logout.php" class="btn btn-danger">Cerrar sesión</a>
-                                    >>>>>>> e29365da6f34ddb3f5a0c6a9bc1fcf7b77db1f36
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <main>
-
                         <!--Carrusel-->
                         <div id="carouselExampleDark" class="carousel carousel-dark slide bg-dark bg-opacity-75">
                             <div class="carousel-indicators">
