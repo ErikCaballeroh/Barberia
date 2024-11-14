@@ -1,55 +1,47 @@
 $(document).ready(function () {
-  // Inicializamos el DataTable
-  $("#myTable").DataTable({
-    // Definimos las columnas iniciales
+  // Inicializamos el DataTable sin datos estáticos y configuramos las columnas
+  const table = $("#myTable").DataTable({
+    ajax: {
+      url: "get_users.php",
+      type: "GET",
+      dataType: "json",
+      dataSrc: "", // Define que los datos se extraigan directamente del array en la respuesta
+      error: function (xhr, status, error) {
+        alert("Error al cargar los datos:", status, error);
+      }
+    },
     columns: [
       {
-        text: "Usuario",
-        data: "user"
+        title: "Usuario",
+        data: "username"
       },
       {
-        text: "Contraseña",
+        title: "Contraseña",
         data: "password",
         render: function (data, type, row, meta) {
-          // Muestra asteriscos por defecto y el botón "Ver"
           return `
             <div class="d-flex justify-content-between">
               <span class="password d-inline-block" data-password="${data}">***************</span>
               <button class="btn btn-secondary btn-sm toggle-password me-3">Ver</button>
             </div>
-          `
+          `;
         }
       },
       {
-        text: "Correo",
+        title: "Correo",
         data: "email"
       },
       {
         title: "Acciones",
-        data: null, // No se toma de los datos, será un campo personalizado
+        data: null,
         defaultContent: `
           <button class="btn btn-primary btn-sm edit-btn">Editar</button>
           <button class="btn btn-danger btn-sm delete-btn">Eliminar</button>
         `
       }
     ],
-
-    // Carga de datos
-    data: [
-      { user: "JuanPerez", password: "MOndiaNdR!8", email: "juanperez@mail.com" },
-      { user: "MariaLopez", password: "Pass1234!", email: "marialopez@mail.com" },
-      { user: "CarlosGomez", password: "1234Gomez!", email: "carlosgomez@mail.com" },
-      { user: "AnaMartinez", password: "AnaPass$123", email: "anamartinez@mail.com" },
-      { user: "LuisRodriguez", password: "Lui$9876", email: "luisrodriguez@mail.com" },
-      { user: "ElenaSanchez", password: "Elena2024#", email: "elenasanchez@mail.com" },
-      { user: "DavidPerez", password: "D4vidP@ss!", email: "davidperez@mail.com" },
-      { user: "SofiaGarcia", password: "S0f!@Garc!a", email: "sofia@garcia.com" },
-      { user: "JorgeMartinez", password: "J0rge#Mart4", email: "jorge.martinez@mail.com" },
-      { user: "CarmenDiaz", password: "C@rmen123!", email: "carmendiaz@mail.com" }
-    ],
-
-    pageLength: 5, // Número de filas por página
-    lengthMenu: [5, 10, 15, 20], // Opciones disponibles para que el usuario elija el número de filas
+    pageLength: 5,
+    lengthMenu: [5, 10, 15, 20]
   });
 
   // Evento para mostrar u ocultar la contraseña
@@ -58,11 +50,11 @@ $(document).ready(function () {
     let currentPassword = passwordSpan.data('password');
 
     if (passwordSpan.text() === "***************") {
-      passwordSpan.text(currentPassword); // Mostrar la contraseña
-      $(this).text("Ocultar"); // Cambiar texto del botón a "Ocultar"
+      passwordSpan.text(currentPassword);
+      $(this).text("Ocultar");
     } else {
-      passwordSpan.text("***************"); // Ocultar la contraseña
-      $(this).text("Ver"); // Cambiar texto del botón a "Ver"
+      passwordSpan.text("***************");
+      $(this).text("Ver");
     }
   });
 });
