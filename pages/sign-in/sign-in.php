@@ -20,7 +20,7 @@
                     </div>
                     <form form action="/barberia/php/ya-registrado.php" method="POST">
                         <fieldset>
-                            <legend class="text-center mb-4">Sign UP</legend>
+                            <legend class="text-center mb-4">sign in</legend>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico:</label>
                                 <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" name="correo" required>
@@ -30,7 +30,7 @@
                                 <input type="password" class="form-control" id="password" placeholder="Contraseña" name="contra" required>
                                 <div id="passwordHelp" class="form-text">
                                     Entre 8-20 caracteres de longitud.
-                            <button type="submit" class="btn btn-dark w-100">Sign UP</button>
+                            <button type="submit" class="btn btn-dark w-100">Sign in</button>
                         </fieldset>
                     </form>
                 </div>
