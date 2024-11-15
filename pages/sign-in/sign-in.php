@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing IN in</title>
-    <link href="/barberia/CSS/bootstrap.min.css" rel="stylesheet">  
+    <link href="/barberia/CSS/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <main>
         <div class="container d-flex justify-content-center align-items-center vh-100">
             <div class="row align-items-center">
                 <div class="col-md-6 d-flex justify-content-center">
-                <img src="/barberia/IMG/sing-in.png" alt="Sign in" class="img-fluid rounded">
+                    <img src="/barberia/IMG/sing-in.png" alt="Sign in" class="img-fluid rounded">
                 </div>
                 <!-- apartado de formulario -->
                 <div class="col-md-6">
@@ -30,7 +32,7 @@
                                 <input type="password" class="form-control" id="password" placeholder="Contraseña" name="contra" required>
                                 <div id="passwordHelp" class="form-text">
                                     Entre 8-20 caracteres de longitud.
-                            <button type="submit" class="btn btn-dark w-100">Sign UP</button>
+                                    <button type="submit" class="btn btn-dark w-100">Sign UP</button>
                         </fieldset>
                     </form>
                 </div>
@@ -40,4 +42,5 @@
 
     <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

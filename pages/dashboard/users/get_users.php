@@ -11,19 +11,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   exit();
 }
 
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_barberia";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-  die("Conexión fallida: " . $conn->connect_error);
-}
+// Conexion a la base de datos
+include '../conecction.php';
 
 // Consulta para obtener los usuarios con id_role = 2
 $sql = "SELECT username, password, email FROM users WHERE id_role = 2";

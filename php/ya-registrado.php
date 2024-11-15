@@ -18,6 +18,7 @@ if (mysqli_num_rows($validar_login) > 0) {
 
     // Verificar la contraseña ingresada con el hash de la base de datos
     if (password_verify($contra, $usuario['password'])) {
+        $_SESSION['id'] = $usuario['id_user'];
         $_SESSION['usuario'] = $correo;
         $_SESSION['username'] = $usuario['username'];
         $_SESSION['role'] = $usuario['id_role'];
