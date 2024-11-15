@@ -18,11 +18,13 @@
                 <!-- apartado de formulario -->
                 <div class="col-md-6">
                     <div class="logo text-center mb-4">
-                        <img src="/barberia/IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                        <a href="/barberia/index.php">
+                            <img src="../../IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                        </a>
                     </div>
                     <form form action="/barberia/php/ya-registrado.php" method="POST">
                         <fieldset>
-                            <legend class="text-center mb-4">sign in</legend>
+                            <legend class="text-center mb-4">Sign IN</legend>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico:</label>
                                 <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" name="correo" required>
