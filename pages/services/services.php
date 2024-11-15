@@ -1,3 +1,16 @@
+<?php
+// get_users.php
+
+// Iniciar sesión para acceder a las variables de sesión
+session_start();
+
+// Verificar si el usuario tiene el rol adecuado (rol 1 = administrador)
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+  // Si no es administrador, redirigir a la página de inicio
+  header('Location: /barberia/index.php');
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 

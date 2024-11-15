@@ -101,7 +101,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                 if ($result->num_rows > 0) {
                     // Mostrar las sucursales como opciones en el select
                     while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row['id_barber'] . '">' . $row['service_number'] . '</option>';
+                        echo '<option value="' . $row['id_barber'] . '">' . $row['id_barber'] . '</option>';
                     }
                 } else {
                     echo '<option value="">No hay sucursales disponibles</option>';

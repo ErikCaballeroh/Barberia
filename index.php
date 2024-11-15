@@ -58,7 +58,13 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <!-- Verificación del rol -->
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>
+                                    <?php endif; ?>
+
                                     <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
+
                                 </ul>
                             </div>
                         <?php endif; ?>

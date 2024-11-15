@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
   exit();
 }
 
-// Consulta para obtener la configuración de la barbería según el ID del barbero
+// Consulta para obtener la configuración de la barbería según el ID del barberia
 $sqlSettings = "SELECT opening_time, closing_time, service_days, max_clients FROM barbers WHERE id_barber = ?";
 $stmt = $conn->prepare($sqlSettings);
 $stmt->bind_param("i", $barberID);

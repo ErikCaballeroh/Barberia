@@ -1,49 +1,106 @@
 $(document).ready(function () {
   // Inicializamos el DataTable
-  $("#myTable").DataTable({
-    // Definimos las columnas iniciales
+  var table = $("#myTable").DataTable({
+    ajax: {
+      url: 'get_services.php', // Archivo PHP para obtener los datos
+      dataSrc: '' // Los datos JSON se insertarán en el cuerpo de la tabla
+    },
     columns: [
-      {
-        text: "Servicio",
-        data: "service"
-      },
-      {
-        text: "Descripcion",
-        data: "description"
-      },
-      {
-        text: "Precio",
-        data: "price"
-      },
-      {
-        text: "Categoria",
-        data: "category"
-      },
+      { title: "Servicio", data: "service" },
+      { title: "Descripcion", data: "description" },
+      { title: "Precio", data: "price" },
+      { title: "Categoria", data: "category" },
       {
         title: "Acciones",
-        data: null, // No se toma de los datos, será un campo personalizado
+        data: null, // Este campo no proviene de los datos directamente
         defaultContent: `
           <button class="btn btn-primary btn-sm edit-btn">Editar</button>
           <button class="btn btn-danger btn-sm delete-btn">Eliminar</button>
         `
       }
     ],
-
-    // Carga de datos
-    data: [
-      { "service": "Corte", "description": "Corte de cabello clásico y moderno", "price": "$120", "category": "Servicio individual" },
-      { "service": "Afeitado", "description": "Afeitado completo con toalla caliente", "price": "$80", "category": "Servicio individual" },
-      { "service": "Corte y Afeitado", "description": "Corte de cabello y afeitado completo", "price": "$180", "category": "Servicio combinado" },
-      { "service": "Perfilado de Barba", "description": "Perfilado y mantenimiento de barba", "price": "$100", "category": "Servicio individual" },
-      { "service": "Coloración", "description": "Tinte para cabello corto", "price": "$150", "category": "Servicio individual" },
-      { "service": "Masaje Capilar", "description": "Relajación con masaje capilar", "price": "$50", "category": "Servicio adicional" },
-      { "service": "Tratamiento Capilar", "description": "Hidratación profunda para el cabello", "price": "$130", "category": "Servicio individual" },
-      { "service": "Corte de Cabello Infantil", "description": "Corte de cabello para niños", "price": "$90", "category": "Servicio individual" },
-      { "service": "Estilizado", "description": "Peinado y estilizado para eventos", "price": "$70", "category": "Servicio adicional" },
-      { "service": "Rasurado Corporal", "description": "Rasurado en áreas específicas", "price": "$100", "category": "Servicio adicional" }
-    ],
-
     pageLength: 5, // Número de filas por página
-    lengthMenu: [5, 10, 15, 20], // Opciones disponibles para que el usuario elija el número de filas
+    lengthMenu: [5, 10, 15, 20], // Opciones para elegir el número de filas
   });
+  // Función para cargar las categorías dinámicamente desde el servidor
+function loadCategories() {
+  $.ajax({
+    type: 'GET',
+    url: 'get_categories.php',
+    success: function(response) {
+        console.log(response); // Verifica la respuesta
+        
+        // No es necesario usar JSON.parse() porque la respuesta es un objeto JavaScript
+        var categories = response;
+
+        // Limpiar las opciones del select antes de agregar las nuevas
+        $('#serviceCategory').empty();
+
+        // Agregar una opción por defecto
+        $('#serviceCategory').append('<option value="" disabled selected>Selecciona una categoría</option>');
+
+        // Agregar las categorías desde la base de datos
+        categories.forEach(function(category) {
+            $('#serviceCategory').append('<option value="' + category.id_category + '">' + category.name + '</option>');
+        });
+    },
+    error: function() {
+        alert('Error al cargar las categorías');
+    }
+});
+}
+
+
+  // Inicializar los modales de Bootstrap
+  var addServiceModal = new bootstrap.Modal(document.getElementById('addServiceModal'));
+  var addCategoryModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
+
+  // Mostrar el modal para agregar un nuevo servicio
+  $('#addServiceBtn').on('click', function() {
+    addServiceModal.show();
+  });
+
+  // Mostrar el modal para agregar una nueva categoría
+  $('#addCategoryBtn').on('click', function() {
+    addCategoryModal.show();
+  });
+
+  // Enviar el formulario de agregar servicio
+  $('#saveService').on('click', function() {
+    var formData = $('#addServiceForm').serialize();
+    
+    $.ajax({
+      type: 'POST',
+      url: 'add_service.php', // Archivo PHP que procesará el formulario
+      data: formData,
+      success: function(response) {
+        alert('Servicio agregado correctamente');
+        addServiceModal.hide(); // Cerrar el modal
+        $('#myTable').DataTable().ajax.reload(); // Recargar la tabla
+      },
+      error: function() {
+        alert('Error al agregar el servicio');
+      }
+    });
+  });
+
+  // Enviar el formulario de agregar categoría
+  $('#saveCategoryBtn').on('click', function() {
+    var categoryName = $('#categoryName').val();
+    
+    $.ajax({
+      type: 'POST',
+      url: 'add_category.php', // Archivo PHP que procesará la categoría
+      data: { name: categoryName },
+      success: function(response) {
+        alert('Categoría agregada correctamente');
+        addCategoryModal.hide(); // Cerrar el modal
+        loadCategories(); // Recargar las categorías después de agregar una nueva
+      },
+      error: function() {
+        alert('Error al agregar la categoría');
+      }
+    });
+  });
+
 });
