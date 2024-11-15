@@ -28,13 +28,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link text-white" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item text-white">
                             <a class="nav-link" href="/barberia/pages/services/services.php">Servicios</a>
                         </li>
                         <li class="nav-item text-white">
-                            <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
+                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
                         </li>
                         <?php
                         //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
