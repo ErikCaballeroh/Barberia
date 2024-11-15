@@ -22,7 +22,13 @@ if (mysqli_num_rows($validar_login) > 0) {
         $_SESSION['usuario'] = $correo;
         $_SESSION['username'] = $usuario['username'];
         $_SESSION['role'] = $usuario['id_role'];
-        header("Location: /barberia/index.php");
+        if ($_SESSION['role'] == 1) {
+            // Redirige al dashboard si es admin
+            header("Location: /barberia/pages/dashboard/dashboard.html");
+        } else {
+            // Redirige al index si no es admin
+            header("Location: /barberia/index.php");
+        }
         exit;
     } else {
         // Contraseña incorrecta

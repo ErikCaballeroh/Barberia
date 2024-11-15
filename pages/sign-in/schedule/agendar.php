@@ -87,6 +87,8 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                             </div>
                         </div>
                     </div>
+
+
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
             <div class="container my-5">
@@ -106,34 +108,34 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     
                     <!-- Formulario para Agendar Cita -->
                     <div class="col-12 col-md-6">
-                        <form class="bg-white p-4 rounded shadow-sm" method="POST" id="agendarCitaForm">
-                                <fieldset>
-                                    <legend class="text-center"><h1>Agendar tu cita</h1></legend>
-                                    <div class="mb-3">
-                                        <label for="sucursal" class="form-label">Sucursal:</label>
-                                        <select class="form-select" id="sucursal" name="sucursal" required>
-                                            <option value="">Seleccione una sucursal</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="fecha" class="form-label">Fecha:</label>
-                                        <input type="date" id="fecha" name="fecha" required><br>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="servicio" class="form-label">Servicio:</label>
-                                        <select class="form-select" id="servicio" name="servicio" required>
-                                            <option value="">Seleccione un servicio</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="hora" class="form-label">Hora:</label>
-                                        <select class="form-select" id="hora" name="hora" required>
-                                            <option value="">Selecciona una hora</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-dark w-100">Agendar</button>
-                                </fieldset>
-                            </form>
+                    <form class="bg-white p-4 rounded shadow-sm" id="agendarCitaForm">
+                    <fieldset>
+                        <legend class="text-center"><h1>Agendar tu cita</h1></legend>
+                        <div class="mb-3">
+                            <label for="sucursal" class="form-label">Sucursal:</label>
+                            <select class="form-select" id="sucursal" name="sucursal" required>
+                                <option value="">Seleccione una sucursal</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha:</label>
+                            <input type="date" id="fecha" name="fecha" required><br>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicio" class="form-label">Servicio:</label>
+                            <select class="form-select" id="servicio" name="servicio" required>
+                                <option value="">Seleccione un servicio</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora" class="form-label">Hora:</label>
+                            <select class="form-select" id="hora" name="hora" required>
+                                <option value="">Selecciona una hora</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Agendar</button>
+                    </fieldset>
+                </form>
                     </div>
                 </div>
             </div>
@@ -152,17 +154,11 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </footer>
     </div>
-    
-    <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+
     <script src="/barberia/JS/jquery-3.7.1.min.js"></script>
+    <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
     <script src="/barberia/JS/agendar.js"></script>
 
-    <script>
-            document.getElementById('logoutButton').addEventListener('click', function() {
-            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
-            logoutModal.show();
-            });
 
-        </script>
 </body>
 </html>

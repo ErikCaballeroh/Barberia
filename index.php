@@ -34,7 +34,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                             <a class="nav-link text-white" href="/pages/about/about.html">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/services/services.html">Servicios</a>
+                            <a class="nav-link" href="/barberia/pages/services/services.php">Servicios</a>
                         </li>
                         <li class="nav-item text-white">
                             <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
