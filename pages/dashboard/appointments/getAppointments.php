@@ -1,38 +1,41 @@
 <?php
-$host = "127.0.0.1";
-$username = "root";
-$password = "";
-$database = "db_barberia";
+session_start();
 
-$conn = new mysqli($host, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+    header('Location: /barberia/index.php');
+    exit();
 }
 
-$sql = "
-    SELECT 
-        a.id_appointment, 
-        u.username AS user, 
-        DATE_FORMAT(a.appointment_datetime, '%d/%m/%Y') AS date,
-        TIME_FORMAT(a.appointment_datetime, '%H:%i') AS time,
-        s.name AS service
-    FROM appointments a
-    JOIN users u ON a.id_user = u.id_user
-    JOIN services s ON a.id_service = s.id_service
-";
+include '../conecction.php';
+
+$sql = "SELECT 
+            a.id_appointment,
+            u.username AS user,
+            s.name AS service,
+            DATE_FORMAT(a.appointment_datetime, '%Y-%m-%d') AS date,
+            DATE_FORMAT(a.appointment_datetime, '%H:%i') AS time
+        FROM appointments a
+        INNER JOIN users u ON a.id_user = u.id_user
+        INNER JOIN services s ON a.id_service = s.id_service
+        ORDER BY a.appointment_datetime ASC";
 
 $result = $conn->query($sql);
 
+if (!$result) {
+    http_response_code(500);
+    echo json_encode(["error" => $conn->error]);
+    exit();
+}
+
+$appointments = [];
+
 if ($result->num_rows > 0) {
-    $appointments = [];
     while ($row = $result->fetch_assoc()) {
         $appointments[] = $row;
     }
-    echo json_encode($appointments);
-} else {
-    echo json_encode([]);
 }
 
-$conn->close();
+header('Content-Type: application/json');
+echo json_encode($appointments);
+exit();
 ?>

@@ -1,20 +1,23 @@
 $(document).ready(function () {
   // Inicializar el DataTable
   $("#myTable").DataTable({
-    ajax: "getAppointments.php", // Ruta al archivo PHP
+    
+    ajax: {
+      url: "getAppointments.php", // Archivo PHP que genera el JSON
+      type: "GET", // Método de solicitud (GET en este caso)
+      dataType: "json", // Especifica el tipo de datos esperado
+      dataSrc: "", // El JSON contiene directamente un array
+      error: function (xhr, status, error) {
+        console.error("Error al cargar los datos:", status, error); // Mensaje en consola para depuración
+        alert("No se pudieron cargar los datos. Por favor, inténtalo más tarde."); // Notifica al usuario
+      },
+    },
     // Definimos las columnas iniciales
     columns: [
       { title: "Usuario", data: "user" },
       { title: "Fecha", data: "date" },
       { title: "Hora", data: "time" },
       { title: "Servicio", data: "service" },
-      {
-        title: "Acciones",
-        data: null, // No se toma de los datos, será un campo personalizado
-        defaultContent: `
-          <button class="btn btn-primary btn-sm edit-btn">Ver detalles</button>
-        `
-      }
     ],
 
     // Carga de datos de prueba
