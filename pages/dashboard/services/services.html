@@ -88,29 +88,29 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
     </header>
     <!-- Modal de Confirmación de Cerrar sesión -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
                     <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                     ¿Estás seguro de que deseas cerrar sesión?
-                </div>
-                <div class="modal-footer">
+            </div>
+            <div class="modal-footer">
                     <!-- Botón Cancelar para cerrar el modal -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 
                     <!-- Enlace para cerrar sesión que llevará al archivo logout.php -->
                     <a href="/barberia/php/logout.php" class="btn btn-danger">Cerrar sesión</a>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
   <main class="container py-5">
     <button type="button" class="btn btn-success" id="addServiceBtn" data-bs-toggle="modal" data-bs-target="#addServiceModal">
-      Agregar Servicio
+    Agregar Servicio
     </button>
     
     <button type="button" class="btn btn-warning" id="addCategoryBtn" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
@@ -127,109 +127,110 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
         </tr>
       </thead>
     </table>
-<!--modal para cambiar y quitar servicios-->
-    <div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editServiceModalLabel">Editar Servicio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Formulario de edición -->
-        <form id="editServiceForm">
-          <input type="hidden" id="serviceId" name="id_service"> <!-- Campo oculto para el ID -->
-          <div class="mb-3">
-            <label for="serviceName" class="form-label">Servicio</label>
-            <input type="text" class="form-control" id="serviceName" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="serviceDescription" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="serviceDescription" name="description">
-          </div>
-          <div class="mb-3">
-            <label for="servicePrice" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="servicePrice" name="price" step="0.01" required>
-          </div>
-          <div class="mb-3">
-            <label for="serviceCategory" class="form-label">Categoría</label>
-            <select class="form-control" id="serviceCategory" name="id_category" required>
 
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="saveChanges">Guardar cambios</button>
-      </div>
+    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addServiceModalLabel">Agregar Servicio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addServiceForm">
+                    <div class="mb-3">
+                        <label for="serviceName">Nombre del Servicio</label>
+                        <input type="text" class="form-control" id="serviceName" name="serviceName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceDescription">Descripción</label>
+                        <input type="text" class="form-control" id="serviceDescription" name="serviceDescription" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="servicePrice">Precio</label>
+                        <input type="number" class="form-control" id="servicePrice" name="servicePrice" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceCategory" class="form-label">Categoría</label>
+                        <select class="form-control" id="serviceCategory" name="serviceCategory" required>
+                            <!-- Las categorías se cargarán dinámicamente aquí -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="saveService">Guardar Cambios</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-<!-- Modal para agregar un nuevo servico -->
-<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addServiceModalLabel">Agregar Nuevo Servicio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="addServiceForm">
-          <div class="mb-3">
-            <label for="serviceName" class="form-label">Nombre del Servicio</label>
-            <input type="text" class="form-control" id="serviceName" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="serviceDescription" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="serviceDescription" name="description">
-          </div>
-          <div class="mb-3">
-            <label for="servicePrice" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="servicePrice" name="price" step="0.01" required>
-          </div>
-          <div class="mb-3">
-            <label for="serviceCategory" class="form-label">Categoría</label>
-            <select class="form-control" id="serviceCategory" name="id_category" required>
-              <!-- Las categorías se cargarán dinámicamente aquí -->
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="saveService">Guardar Servicio</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal para agregar una nueva categoría -->
+<!-- Modal para agregar categoría -->
 <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addCategoryModalLabel">Agregar Nueva Categoría</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="addCategoryForm">
-          <div class="mb-3">
-            <label for="categoryName" class="form-label">Nombre de la Categoría</label>
-            <input type="text" class="form-control" id="categoryName" name="name" required>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="saveCategoryBtn">Guardar Categoría</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCategoryModalLabel">Agregar Categoría</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addCategoryForm">
+                    <div class="mb-3">
+                        <label for="categoryName" class="form-label">Nombre de la Categoría</label>
+                        <input type="text" class="form-control" id="categoryName" name="categoryName" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="saveCategory">Guardar Categoría</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
+<!---editar -->
+<div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editServiceModalLabel">Editar Servicio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editServiceForm">
+                    <input type="hidden" id="editServiceId" name="serviceId">
+                    <div class="mb-3">
+                        <label for="editServiceName">Nombre del Servicio</label>
+                        <input type="text" class="form-control" id="editServiceName" name="serviceName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editServiceDescription">Descripción</label>
+                        <input type="text" class="form-control" id="editServiceDescription" name="serviceDescription" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editServicePrice">Precio</label>
+                        <input type="number" class="form-control" id="editServicePrice" name="servicePrice" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editServiceCategory" class="form-label">Categoría</label>
+                        <select class="form-control" id="editServiceCategory" name="serviceCategory" required>
+                            <!-- Las categorías se cargarán dinámicamente aquí -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="updateService">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
   </main>
-  <script src="/barberia/js/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+  <script src="/barberia/js/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/datatables.min.js"></script>
   <script src="services_table.js"></script>
 </body>

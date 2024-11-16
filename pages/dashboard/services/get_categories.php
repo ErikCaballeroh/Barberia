@@ -1,22 +1,23 @@
 <?php
-header('Content-Type: application/json'); // Indica que la respuesta será en JSON
-
-// Conexión a la base de datos (ajusta con tus credenciales)
-include '../conecction.php'; // Asegúrate de que la ruta sea correcta
+// Conexión a la base de datos
+include '../conecction.php'; // Asegúrate de que la conexión esté configurada correctamente
 
 // Consulta para obtener las categorías
-$result = $conn->query("SELECT id_category, name FROM categories");
+$sql = "SELECT id_category, name FROM categories";
+$result = $conn->query($sql);
 
-// Verifica si hay resultados
+// Crear un array para almacenar las categorías
+$categories = [];
 if ($result->num_rows > 0) {
-    $categories = [];
+    // Convertir los resultados a un array
     while ($row = $result->fetch_assoc()) {
         $categories[] = $row;
     }
-    echo json_encode($categories); // Devuelve las categorías como JSON
-} else {
-    echo json_encode([]); // Si no hay categorías, devuelve un array vacío
 }
 
+// Enviar las categorías como JSON
+echo json_encode($categories);
+
+// Cerrar la conexión
 $conn->close();
 ?>

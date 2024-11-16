@@ -9,7 +9,7 @@ $(document).ready(function () {
       { title: "Servicio", data: "service" },
       { title: "Descripcion", data: "description" },
       { title: "Precio", data: "price" },
-      { title: "Categoria", data: "category" },
+      {  title: "Categoria", data: "category" },
       {
         title: "Acciones",
         data: null, // Este campo no proviene de los datos directamente
@@ -22,85 +22,161 @@ $(document).ready(function () {
     pageLength: 5, // Número de filas por página
     lengthMenu: [5, 10, 15, 20], // Opciones para elegir el número de filas
   });
-  // Función para cargar las categorías dinámicamente desde el servidor
-function loadCategories() {
-  $.ajax({
-    type: 'GET',
-    url: 'get_categories.php',
-    success: function(response) {
-        console.log(response); // Verifica la respuesta
-        
-        // No es necesario usar JSON.parse() porque la respuesta es un objeto JavaScript
-        var categories = response;
+      // Cargar categorías para el select cuando se abra el modal de edición
+      function loadCategoriesForModal() {
+          $.ajax({
+              url: 'get_categories.php', // Este es el archivo que obtiene las categorías
+              method: 'GET',
+              dataType: 'json',
+              success: function(data) {
+                  var categoryDropdown = $('#editServiceCategory');
+                  categoryDropdown.empty(); // Limpiar las opciones existentes
+  
+                  // Añadir una opción por defecto si no hay ninguna
+                  categoryDropdown.append('<option value="" disabled selected>Selecciona una categoría</option>');
+  
+                  // Rellenar las opciones con las categorías
+                  data.forEach(function(category) {
+                      categoryDropdown.append('<option value="' + category.id_category + '">' + category.name + '</option>');
+                  });
+              },
+              error: function() {
+                  alert('Error al cargar las categorías');
+              }
+          });
+      }
+  
+      // Abrir el modal de edición y cargar los datos
+      $('#myTable tbody').on('click', 'button.edit-btn', function() {
+          var data = table.row($(this).parents('tr')).data(); // Obtener los datos de la fila
+          console.log("Datos seleccionados para editar:", data);
+  
+          // Llenar los campos del formulario con los datos del servicio seleccionado
+          $('#editServiceId').val(data.id_service);
+          $('#editServiceName').val(data.name);
+          $('#editServiceDescription').val(data.description);
+          $('#editServicePrice').val(data.price);
+          $('#editServiceCategory').val(data.id_category); // Establecer la categoría seleccionada
+  
+          // Cargar las categorías antes de mostrar el modal
+          loadCategoriesForModal();
+  
+          // Mostrar el modal
+          $('#editServiceModal').modal('show');
+      });
+  
+      // Manejar el evento de guardar cambios
+      $('#updateService').on('click', function() {
+          var formData = $('#editServiceForm').serialize(); // Obtener los datos del formulario
+  
+          // Enviar los datos al servidor para actualizar el servicio
+          $.ajax({
+              url: 'update_service.php', // Archivo PHP que procesa la actualización
+              method: 'POST',
+              data: formData,
+              dataType: 'json',
+              success: function(response) {
+                  if (response.success) {
+                      alert('Servicio actualizado correctamente');
+                      $('#editServiceModal').modal('hide'); // Cerrar el modal
+                      table.ajax.reload(); // Recargar la tabla para mostrar los datos actualizados
+                  } else {
+                      alert('Error al actualizar el servicio: ' + response.message);
+                  }
+              },
+              error: function() {
+                  alert('Error al procesar la solicitud.');
+              }
+          });
+      });
+  
+  // Event listener para el botón de eliminar 
+  $('#myTable tbody').on('click', 'button.delete-btn', function() {
+    const data = table.row($(this).parents('tr')).data(); // Obtener datos de la fila
 
-        // Limpiar las opciones del select antes de agregar las nuevas
-        $('#serviceCategory').empty();
-
-        // Agregar una opción por defecto
-        $('#serviceCategory').append('<option value="" disabled selected>Selecciona una categoría</option>');
-
-        // Agregar las categorías desde la base de datos
-        categories.forEach(function(category) {
-            $('#serviceCategory').append('<option value="' + category.id_category + '">' + category.name + '</option>');
+    if (confirm("¿Estás seguro de que deseas eliminar este servicio?")) {
+        $.ajax({
+            url: 'delete.php', // Archivo PHP que maneja la eliminación
+            method: 'POST',
+            data: { serviceId: data.id_service }, // Enviar ID del servicio
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    alert(response.message); // Mostrar mensaje de éxito
+                    table.ajax.reload(); // Recargar la tabla
+                } else {
+                    alert('Error: ' + response.message); // Mostrar mensaje de error
+                }
+            },
+            
         });
-    },
-    error: function() {
-        alert('Error al cargar las categorías');
     }
 });
-}
-
-
-  // Inicializar los modales de Bootstrap
-  var addServiceModal = new bootstrap.Modal(document.getElementById('addServiceModal'));
-  var addCategoryModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
-
-  // Mostrar el modal para agregar un nuevo servicio
-  $('#addServiceBtn').on('click', function() {
-    addServiceModal.show();
-  });
-
-  // Mostrar el modal para agregar una nueva categoría
-  $('#addCategoryBtn').on('click', function() {
-    addCategoryModal.show();
-  });
-
-  // Enviar el formulario de agregar servicio
-  $('#saveService').on('click', function() {
-    var formData = $('#addServiceForm').serialize();
-    
-    $.ajax({
-      type: 'POST',
-      url: 'add_service.php', // Archivo PHP que procesará el formulario
+  $.ajax({
+    url: 'get_categories.php', //devuelve las categorías
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+        var categoriesDropdown = $('#serviceCategory');
+        categoriesDropdown.empty(); // Limpiar el select
+        categoriesDropdown.append('<option value="" disabled selected>Selecciona una categoría</option>');
+        data.forEach(function (category) {
+            categoriesDropdown.append('<option value="' + category.id_category + '">' + category.name + '</option>');
+        });
+    },
+    error: function () {
+        alert('Error al cargar las categorías.');
+    }
+});
+// guardar servicio
+$('#saveService').on('click', function () {
+  var formData = $('#addServiceForm').serialize(); // datos del formulario
+  $.ajax({
+      url: 'add_service.php',
+      method: 'POST',
       data: formData,
-      success: function(response) {
-        alert('Servicio agregado correctamente');
-        addServiceModal.hide(); // Cerrar el modal
-        $('#myTable').DataTable().ajax.reload(); // Recargar la tabla
+      dataType: 'json', // Asegúrate de que la respuesta sea JSON
+      success: function (response) {
+          if (response.success) {
+              alert(response.message);
+              $('#addServiceModal').modal('hide');
+              $('#addServiceForm')[0].reset(); // Resetear el formulario
+              $('#myTable').DataTable().ajax.reload(); // Recargar la tabla
+          } else {
+              alert('Error: ' + response.message);
+          }
       },
-      error: function() {
-        alert('Error al agregar el servicio');
+      error: function () {
+          alert('Error al procesar la solicitud.');
       }
-    });
   });
+});
 
-  // Enviar el formulario de agregar categoría
-  $('#saveCategoryBtn').on('click', function() {
-    var categoryName = $('#categoryName').val();
-    
-    $.ajax({
-      type: 'POST',
-      url: 'add_category.php', // Archivo PHP que procesará la categoría
-      data: { name: categoryName },
-      success: function(response) {
-        alert('Categoría agregada correctamente');
-        addCategoryModal.hide(); // Cerrar el modal
-        loadCategories(); // Recargar las categorías después de agregar una nueva
+$('#saveCategory').on('click', function () {
+  var formData = $('#addCategoryForm').serialize(); // Serializar datos del formulario
+
+  // Enviar la categoría al servidor
+  $.ajax({
+      url: 'add_category.php', // Archivo PHP para guardar la categoría
+      method: 'POST',
+      data: formData,
+      dataType: 'json',
+      success: function (response) {
+          if (response.success) {
+              alert(response.message);
+              $('#addCategoryModal').modal('hide'); // Cerrar el modal
+              $('#addCategoryForm')[0].reset(); // Limpiar el formulario
+              // Opcional: Recargar categorías dinámicamente en el otro formulario
+              $('#serviceCategory').append(
+                  `<option value="${response.category_id}">${response.category_name}</option>`
+              );
+          } else {
+              alert('Error: ' + response.message);
+          }
       },
-      error: function() {
-        alert('Error al agregar la categoría');
+      error: function () {
+          alert('Error al agregar la categoría.');
       }
-    });
   });
-
+}); 
 });

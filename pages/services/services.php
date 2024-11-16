@@ -25,6 +25,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
 
 <body>
 <header>
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -52,7 +53,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                         <?php
                         //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
                         if (!isset($_SESSION["usuario"])): ?>
-                            <li class="nav-item">
+                            <li class="nav-item text-white">
                                 <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
@@ -68,7 +69,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <!-- Verificación del rol -->
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>
+                                    <?php endif; ?>
+
                                     <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
+
                                 </ul>
                             </div>
                         <?php endif; ?>
@@ -77,6 +84,27 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
             </div>
         </nav>
     </header>
+    <!-- Modal de Confirmación de Cerrar sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirmación de Cerrar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <!-- Botón Cancelar para cerrar el modal -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                    <!-- Enlace para cerrar sesión que llevará al archivo logout.php -->
+                    <a href="/barberia/php/logout.php" class="btn btn-danger">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
   <div class="container py-5">
     <h1 class="mb-5">Servicios</h1>
