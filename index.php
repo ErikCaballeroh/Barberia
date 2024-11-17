@@ -57,7 +57,9 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                     <img src="3" alt="Logo" class="d-inline-block align-top col-6">
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
+                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.html">Agendar cita</a></li>
+                                    <?php endif; ?>
                                     <!-- Verificación del rol -->
                                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
                                         <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>

@@ -11,12 +11,12 @@
             <div class="container d-flex justify-content-center align-items-center vh-100">
                 <div class="row align-items-center">
                     <div class="col-md-6 d-flex justify-content-center">
-                        <img src="../../IMG/sign-up.png" alt="Sign Up" class="img-fluid rounded">
+                        <img src="/barberia/IMG/sign-up.png" alt="Sign Up" class="img-fluid rounded">
                     </div>
                     <div class="col-md-6">
                         <div class="logo text-center mb-4">
                         <a href="/barberia/index.php">
-                            <img src="../../IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                            <img src="/barberia/IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
                         </a>
                         </div>
                         <form action="/barberia/php/registrar.php" method="POST">
