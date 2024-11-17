@@ -136,13 +136,15 @@ session_start();
       <div class="social-links mb-3">
         <a href="https://instagram.com" target="_blank">Instagram</a> |
         <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://maps.google.com" target="_blank">Google Maps</a>
+        <a class="googleMapsLink" href="#">Ver en Google Maps</a>
       </div>
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>
   </footer>
   <script src="servicios.js"></script>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/location.js"></script>
+  
   <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));

@@ -3,7 +3,7 @@
 include '../connection.php';
 
 // Consulta para obtener el enlace de Google Maps y el número de WhatsApp
-$sql = "SELECT googlemaps_link, service_number FROM barbers WHERE id_barber = 1";
+$sql = "SELECT googlemaps_link FROM barbers WHERE id_barber = 1";
 $result = $conn->query($sql);
 
 // Verificar si la consulta trae resultados

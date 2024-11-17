@@ -126,7 +126,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
           <span>San Pedro</span>
         </div>
         <!-- Botón de Ubicación -->
-        <a href="https://www.google.com/maps" target="_blank" class="btn btn-dark mb-3">Ubicación</a>
+        <a class="googleMapsLink" href="#" target="_blank" class="btn btn-dark mb-3">Ubicación</a>
         <p>En Barberia Rivera Shop no hacemos ninguna distinción ¡Todos son bienvenidos!</p>
         <p>¡Los esperamos!</p>
       </div>
@@ -142,13 +142,13 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
       <div class="social-links mb-3">
         <a href="https://instagram.com" target="_blank">Instagram</a> |
         <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://maps.google.com" target="_blank">Google Maps</a>
+        <a class="googleMapsLink" href="#">Ver en Google Maps</a>
       </div>
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>
   </footer>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
-  <script src="about_settings.js"></script>
+  <script src="/barberia/js/location.js"></script>
   <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
