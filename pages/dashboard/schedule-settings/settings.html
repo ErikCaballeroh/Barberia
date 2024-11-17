@@ -54,19 +54,26 @@
     <h2 class="fa-1 fw-bold mb-3">
       Establecer horario
     </h2>
-    <form class="form row gap-5">
+    <form class="form row gap-5" id="form-settings">
       <section class="col-4 d-flex flex-column">
         <div class="mb-3 row">
-          <label for="time" class="form-label fst-italic">Hora de apertura</label>
-          <select name="time" class="form-select py-2 border border-dark">
+          <label for="opening-time" class="form-label fst-italic">Hora de apertura</label>
+          <select name="opening-time" class="form-select py-2 border border-dark" id="opening-time">
             <option value="" default>Selecciona una hora</option>
           </select>
         </div>
 
         <div class="mb-3 row">
-          <label for="time" class="form-label fst-italic">Horas de servicio</label>
-          <input type="number" name="time" class="form-control py-2 border border-dark"
-            placeholder='Numero de horas ej. "3"'>
+          <label for="closing-time" class="form-label fst-italic">Hora de cierre</label>
+          <select name="closing-time" class="form-select py-2 border border-dark" id="closing-time">
+            <option value="" default>Selecciona una hora</option>
+          </select>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="max-clients" class="form-label fst-italic">Clientes por hora</label>
+          <input type="number" name="max-clients" class="form-control py-2 border border-dark"
+            placeholder='Numero de horas ej. "3"' id="max-clients">
         </div>
 
         <div class="row mt-auto">
@@ -130,6 +137,7 @@
   </main>
   <script src="/barberia/js/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+  <script src="/Barberia/JS/sweetalert2.all.min.js"></script>
   <script src="settings_handler.js"></script>
 </body>
 
