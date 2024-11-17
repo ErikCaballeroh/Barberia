@@ -133,7 +133,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
           </div>
         </div>
         <!-- Botón de WhatsApp -->
-        <a href="https://wa.me/<?php echo urlencode($service_number);?>" target="_blank" class="btn btn-success d-flex align-items-center">
+        <a id="whatsappButton" class="btn btn-success d-flex align-items-center">
           <img src="/barberia/IMG/WhatsApp_icon.png" alt="WhatsApp" style="width: 20px; margin-right: 8px;">
           WhatsApp
         </a>
@@ -158,6 +158,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
   </footer>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/location.js"></script>
+  <script src="contact.js"></script>
   <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
@@ -165,6 +166,5 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
         });
     </script>
 </body>
-
 
 </html>
