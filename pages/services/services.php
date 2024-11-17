@@ -146,6 +146,11 @@ session_start();
   </footer>
   <script src="servicios.js"></script>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
-  
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 </html>

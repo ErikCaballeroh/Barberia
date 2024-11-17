@@ -149,6 +149,12 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
   </footer>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
   <script src="about_settings.js"></script>
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>

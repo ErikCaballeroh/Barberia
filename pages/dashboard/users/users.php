@@ -128,6 +128,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
   <script src="/barberia/js/datatables.min.js"></script>
   <script src="users_table.js"></script>
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>

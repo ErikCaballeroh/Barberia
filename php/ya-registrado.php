@@ -24,7 +24,7 @@ if (mysqli_num_rows($validar_login) > 0) {
         $_SESSION['role'] = $usuario['id_role'];
         if ($_SESSION['role'] == 1) {
             // Redirige al dashboard si es admin
-            header("Location: /barberia/pages/dashboard/dashboard.html");
+            header("Location: /barberia/pages/dashboard/dashboard.php");
         } else {
             // Redirige al index si no es admin
             header("Location: /barberia/index.php");

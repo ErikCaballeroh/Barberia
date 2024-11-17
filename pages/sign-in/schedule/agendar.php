@@ -180,7 +180,12 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <script src="agendar.js"></script>
 
 
-
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>

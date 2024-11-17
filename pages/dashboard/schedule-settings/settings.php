@@ -197,6 +197,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
   <script src="/Barberia/JS/sweetalert2.all.min.js"></script>
   <script src="settings_handler.js"></script>
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>

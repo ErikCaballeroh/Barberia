@@ -142,6 +142,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <script src="/barberia/js/echarts.min.js"></script>
   <script src="sales-chart.js"></script>
   <script src="appointments-chart.js"></script>
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>
