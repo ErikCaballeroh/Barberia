@@ -24,7 +24,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <link rel="stylesheet" href="/barberia/css/Compartido.css">
   <link rel="stylesheet" href="/barberia/css/Inicio.css">
   <link rel="stylesheet" href="/barberia/css/datatables.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -87,7 +86,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
     <h2 class="fa-1 fw-bold mb-3">
       Establecer horario
     </h2>
-    <form class="form row gap-5" action="/barberia/pages/dashboard/contact-settings/get_number_link.php" method="POST">
+    <form id="update-form" class="form row gap-5">
       <section class="col-4 d-flex flex-column">
           <div class="mb-3 row">
               <label for="whatsapp" class="form-label fst-italic">Número de WhatsApp</label>
@@ -109,6 +108,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   </main>
   <script src="/barberia/js/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/barberia/pages/dashboard/contact-settings/contact.js"></script>
  
 
   <script>

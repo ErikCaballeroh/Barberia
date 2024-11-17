@@ -25,10 +25,11 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $barberID = $row['id_barber'];
 } else {
-    // Si no se encuentra el ID del barbero, redirige o muestra un error
-    echo json_encode(["error" => "No se encontró el barbero asociado a este usuario"]);
+    // Si no se encuentra el ID del barbero, retornar un error JSON
+    echo json_encode(["status" => "error", "message" => "No se encontró el barbero asociado a este usuario"]);
     exit();
 }
+
 // Sanear los datos del formulario para evitar SQL Injection
 $whatsapp = $_POST['whatsapp'];
 $maps = $_POST['maps'];
@@ -40,32 +41,14 @@ $maps = $conn->real_escape_string($maps);
 $sqlUpdate = "UPDATE barbers SET service_number = ?, googlemaps_link = ? WHERE id_barber = ?";
 $stmt = $conn->prepare($sqlUpdate);
 $stmt->bind_param("ssi", $whatsapp, $maps, $barberID);
-if ($stmt->execute()) {
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-    echo "<script>
-            Swal.fire({
-                title: 'Actualizado!',
-                text: 'La información se actualizó correctamente.',
-                icon: 'success'
-            }).then(() => {
-                window.location.href = window.location.href;  // Recargar la misma página
-            });
-          </script>";
-    exit();
-} else {
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-    echo "<script>
-            Swal.fire({
-                title: 'Error!',
-                text: 'Hubo un error al actualizar la información.',
-                icon: 'error'
-            }).then(() => {
-                window.location.href = window.location.href;  // Recargar la misma página
-            });
-          </script>";
-    exit();
-}
 
+if ($stmt->execute()) {
+    // Respuesta exitosa en formato JSON
+    echo json_encode(["status" => "success", "message" => "La información se actualizó correctamente."]);
+} else {
+    // Respuesta de error en formato JSON
+    echo json_encode(["status" => "error", "message" => "Hubo un error al actualizar la información."]);
+}
 
 // Cerrar la conexión
 $conn->close();

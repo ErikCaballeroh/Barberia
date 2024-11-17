@@ -1,6 +1,5 @@
 <?php
-// Iniciar sesión para acceder a las variables de sesión
-session_start();
+session_start(); // Iniciar la sesión para acceder a las variables de sesión
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,17 +7,13 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios</title>
+  <title>Contactanos</title>
   <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
-  <link rel="stylesheet" href="/barberia/CSS/servicios.css">
   <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
 </head>
 
 <body>
 <header>
-<header>
-        <!--Barra de navegacion-->
-        <header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -101,34 +96,52 @@ session_start();
         </div>
     </div>
 
+    
   <div class="container py-5">
-    <h1 class="mb-5">Servicios</h1>
-    <!-- Imagen principal -->
-    <div class="text-center mb-4">
-      <img src="/barberia/IMG/servicios.jpeg" alt="Barbería" class="img-fluid">
-    </div>
-    <div class="row gy-5">
-      <!-- Servicios Individuales -->
+    <div class="row align-items-center">
+      <!-- Sección de Contacto -->
       <div class="col-md-6">
-        <h3>Servicios Individuales</h3>
-            <ul id="serviciosIndividualesList" class="service-list list-unstyled"></ul>
-          
-        <!-- Servicios Adicionales -->
-        <h3>Servicios Adicionales</h3>
-        <ul id="serviciosAdicionalesList" class="service-list list-unstyled"></ul>
-
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra1.jpg" alt="Barbería" class="img-fluid">
+        <h2 class="mb-4">Contáctanos</h2>
+        <!-- Acordeón de Preguntas -->
+        <div class="accordion mb-4" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                ¿Aceptan tarjeta?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sí, aceptamos tarjetas de crédito y débito.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                ¿Necesito hacer una cita previa o aceptan clientes sin cita?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Aceptamos clientes sin cita, pero recomendamos hacer una cita para evitar esperas.
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Botón de WhatsApp -->
+        <a href="https://wa.me/<?php echo urlencode($service_number);?>" target="_blank" class="btn btn-success d-flex align-items-center">
+          <img src="/barberia/IMG/WhatsApp_icon.png" alt="WhatsApp" style="width: 20px; margin-right: 8px;">
+          WhatsApp
+        </a>
       </div>
-      <!-- Paquetes -->
-      <div class="col-md-6">
-        <h3>Paquetes</h3>
-        <ul id="paquetesList" class="service-list list-unstyled" ></ul>
-        
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra2.jpg" alt="Barbería" class="img-fluid">
-        </div>  
+      <!-- Imagen -->
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/barb_cont.jpg" alt="Barbería" class="img-fluid rounded">
       </div>
     </div>
   </div>
@@ -144,8 +157,7 @@ session_start();
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>
   </footer>
-  <script src="servicios.js"></script>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
-  
 </body>
+
 </html>

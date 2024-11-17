@@ -1,6 +1,6 @@
 <?php
 // Incluir la conexión a la base de datos
-include 'connection.php';
+include '../connection.php';
 
 // Consulta para obtener el enlace de Google Maps y el número de WhatsApp
 $sql = "SELECT googlemaps_link, service_number FROM barbers WHERE id_barber = 1";

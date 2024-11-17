@@ -1,24 +1,21 @@
 <?php
-// Iniciar sesión para acceder a las variables de sesión
-session_start();
+session_start(); // Iniciar la sesión para acceder a las variables de sesión
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios</title>
+  <title>Sobre Nosostros</title>
   <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
-  <link rel="stylesheet" href="/barberia/CSS/servicios.css">
+  <link rel="stylesheet" href="/barberia/CSS/sobrenosotros.css">
   <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
 </head>
 
 <body>
 <header>
-<header>
-        <!--Barra de navegacion-->
-        <header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -102,33 +99,39 @@ session_start();
     </div>
 
   <div class="container py-5">
-    <h1 class="mb-5">Servicios</h1>
-    <!-- Imagen principal -->
-    <div class="text-center mb-4">
-      <img src="/barberia/IMG/servicios.jpeg" alt="Barbería" class="img-fluid">
-    </div>
-    <div class="row gy-5">
-      <!-- Servicios Individuales -->
-      <div class="col-md-6">
-        <h3>Servicios Individuales</h3>
-            <ul id="serviciosIndividualesList" class="service-list list-unstyled"></ul>
-          
-        <!-- Servicios Adicionales -->
-        <h3>Servicios Adicionales</h3>
-        <ul id="serviciosAdicionalesList" class="service-list list-unstyled"></ul>
-
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra1.jpg" alt="Barbería" class="img-fluid">
-        </div>
+    <!-- Sección Sobre Nosotros -->
+    <div class="row mb-5">
+      <div class="col-md-6 text-center">
+        <h2 class="fw-bold">Sobre Nosotros</h2>
+        <p class="text-muted">Barberia Rivera Shop</p>
+        <p>En Barberia Rivera Shop tenemos como finalidad crear una experiencia total para nuestros usuarios contamos
+          con excelentes instalaciones, equipo de calidad y personal capacitado.</p>
+        <p>Tenemos la filosofía es siempre superar las expectativas de nuestros clientes para crear un diferenciador
+          permanente con nuestros competidores. Nuestra mejor recompensa es lograr que nuestros clientes se sientan como
+          en casa, con un servicio de calidad y nos recomienden.</p>
       </div>
-      <!-- Paquetes -->
-      <div class="col-md-6">
-        <h3>Paquetes</h3>
-        <ul id="paquetesList" class="service-list list-unstyled" ></ul>
-        
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra2.jpg" alt="Barbería" class="img-fluid">
-        </div>  
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/sobrenosotros1.jpg" alt="Barberia" class="about-image">
+      </div>
+    </div>
+    <!-- Sección Sucursales -->
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <h2 class="fw-bold">Sucursales</h2>
+      </div>
+      <div class="col-md-6 text-center">
+        <!-- Ícono y Nombre de la Sucursal -->
+        <div class="icon-text mb-2">
+          <img src="/barberia/IMG/ubicacion.png" alt="Ubicación">
+          <span>San Pedro</span>
+        </div>
+        <!-- Botón de Ubicación -->
+        <a href="https://www.google.com/maps" target="_blank" class="btn btn-dark mb-3">Ubicación</a>
+        <p>En Barberia Rivera Shop no hacemos ninguna distinción ¡Todos son bienvenidos!</p>
+        <p>¡Los esperamos!</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/sobrenosotros2.jpg" alt="Barberia" class="branch-image">
       </div>
     </div>
   </div>
@@ -144,8 +147,8 @@ session_start();
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>
   </footer>
-  <script src="servicios.js"></script>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
-  
+  <script src="about_settings.js"></script>
 </body>
+
 </html>

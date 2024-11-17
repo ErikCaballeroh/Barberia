@@ -1,24 +1,18 @@
-<?php
-// Iniciar sesión para acceder a las variables de sesión
-session_start();
-?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios</title>
-  <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
-  <link rel="stylesheet" href="/barberia/CSS/servicios.css">
-  <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
+  <title>Estadisticas</title>
+  <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/barberia/css/Compartido.css">
+  <link rel="stylesheet" href="/barberia/css/Inicio.css">
+  <link rel="stylesheet" href="/barberia/css/datatables.min.css">
 </head>
 
 <body>
 <header>
-<header>
-        <!--Barra de navegacion-->
-        <header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -101,51 +95,40 @@ session_start();
         </div>
     </div>
 
-  <div class="container py-5">
-    <h1 class="mb-5">Servicios</h1>
-    <!-- Imagen principal -->
-    <div class="text-center mb-4">
-      <img src="/barberia/IMG/servicios.jpeg" alt="Barbería" class="img-fluid">
-    </div>
-    <div class="row gy-5">
-      <!-- Servicios Individuales -->
-      <div class="col-md-6">
-        <h3>Servicios Individuales</h3>
-            <ul id="serviciosIndividualesList" class="service-list list-unstyled"></ul>
-          
-        <!-- Servicios Adicionales -->
-        <h3>Servicios Adicionales</h3>
-        <ul id="serviciosAdicionalesList" class="service-list list-unstyled"></ul>
+  <main class="container py-5">
 
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra1.jpg" alt="Barbería" class="img-fluid">
+    <section class="nav nav-tabs" id="chart-tabs">
+      <li class="nav-item">
+        <button class="nav-link active text-dark" id="most-saled-tab" data-bs-toggle="tab" data-bs-target="#most-saled"
+          type="button" role="tab" aria-controls="most-saled" aria-selected="true">Más vendidos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link text-dark" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments"
+          type="button" role="tab" aria-controls="appointments" aria-selected="false">Citas por día</button>
+      </li>
+    </section>
+
+    <section class="tab-content" id="myTabContent">
+      <article class="tab-pane fade show active p-4" id="most-saled" role="tabpanel" aria-labelledby="most-saled-tab">
+        <div id="sales-chart" style="width: 1000px; height:500px;">
+
         </div>
-      </div>
-      <!-- Paquetes -->
-      <div class="col-md-6">
-        <h3>Paquetes</h3>
-        <ul id="paquetesList" class="service-list list-unstyled" ></ul>
-        
-        <div class="footer-image mt-3">
-          <img src="/barberia/IMG/muestra2.jpg" alt="Barbería" class="img-fluid">
-        </div>  
-      </div>
-    </div>
-  </div>
-  <!--Pie de pagina-->
-  <footer class="footer bg-dark text-white text-center py-4 mt-auto">
-    <div class="container">
-      <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
-      <div class="social-links mb-3">
-        <a href="https://instagram.com" target="_blank">Instagram</a> |
-        <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://maps.google.com" target="_blank">Google Maps</a>
-      </div>
-      <p class="mb-0">© 2024 Rivera Barber Shop</p>
-    </div>
-  </footer>
-  <script src="servicios.js"></script>
-  <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
-  
+      </article>
+      <article class="tab-pane fade p-4" id="appointments" role="tabpanel" aria-labelledby="appointments-tab">
+        <div id="appointments-chart" style="width: 1000px; height:500px;">
+
+        </div>
+      </article>
+    </section>
+
+
+  </main>
+
+  <script src="/barberia/js/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+  <script src="/barberia/js/echarts.min.js"></script>
+  <script src="sales-chart.js"></script>
+  <script src="appointments-chart.js"></script>
 </body>
+
 </html>
