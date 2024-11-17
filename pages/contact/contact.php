@@ -32,11 +32,11 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/barberia/pages/about/about.php">Sobre Nosotros</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/services/services.php">Servicios</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/barberia/pages/services/services.php">Servicios</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/contact/contact.php">Contáctanos</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" href="/barberia/pages/contact/contact.php">Contáctanos</a>
                         </li>
                         <?php
                         //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
@@ -53,7 +53,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
-                                    <img src="3" alt="Logo" class="d-inline-block align-top col-6">
+                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 25px;">
                                 </a>
                                 <ul class="dropdown-menu">
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
@@ -95,7 +95,6 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </div>
     </div>
-
     
   <div class="container py-5">
     <div class="row align-items-center">
