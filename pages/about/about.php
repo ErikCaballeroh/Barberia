@@ -126,7 +126,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
           <span>San Pedro</span>
         </div>
         <!-- Botón de Ubicación -->
-        <a class="googleMapsLink" href="#" target="_blank" class="btn btn-dark mb-3">Ubicación</a>
+        <a id="googleMapsLink" href="#" target="_blank" class="btn btn-dark mb-3 googleMapsLink googleMapsLink">Ubicación</a>
         <p>En Barberia Rivera Shop no hacemos ninguna distinción ¡Todos son bienvenidos!</p>
         <p>¡Los esperamos!</p>
       </div>
@@ -142,7 +142,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
       <div class="social-links mb-3">
         <a href="https://instagram.com" target="_blank">Instagram</a> |
         <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a class="googleMapsLink" href="#">Ver en Google Maps</a>
+        <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
       </div>
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>

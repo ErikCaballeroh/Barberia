@@ -178,7 +178,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             <div class="social-links mb-3">
                 <a href="https://instagram.com" target="_blank">Instagram</a> |
                 <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a class="googleMapsLink" href="#">Ver en Google Maps</a>
+                <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
             </div>
             <p class="mb-0">© 2024 Rivera Barber Shop</p>
         </div>
