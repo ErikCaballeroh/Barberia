@@ -24,6 +24,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <link rel="stylesheet" href="/barberia/css/Compartido.css">
   <link rel="stylesheet" href="/barberia/css/Inicio.css">
   <link rel="stylesheet" href="/barberia/css/datatables.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -88,29 +89,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
     </h2>
     <form class="form row gap-5" action="/barberia/pages/dashboard/contact-settings/get_number_link.php" method="POST">
       <section class="col-4 d-flex flex-column">
-            <div class="mb-3 row">
-              <label for="branch" class="form-label fst-italic">Selecciona la Sucursal</label>
-              <select name="branch" id="branch" class="form-control py-2 border border-dark" required>
-                <?php
-                include '../conecction.php'; // Asegúrate de que esta ruta sea correcta
-
-                // Consulta para cargar las sucursales
-                $sql = "SELECT id_barber, service_number FROM barbers";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    // Mostrar las sucursales como opciones en el select
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<option value="' . $row['id_barber'] . '">' . $row['id_barber'] . '</option>';
-                    }
-                } else {
-                    echo '<option value="">No hay sucursales disponibles</option>';
-                }
-
-                $conn->close();
-                ?>
-            </select>
-
           <div class="mb-3 row">
               <label for="whatsapp" class="form-label fst-italic">Número de WhatsApp</label>
               <input type="text" name="whatsapp" class="form-control py-2 border border-dark"
@@ -123,7 +101,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                     placeholder="https://maps.app.goo.gl/Hfp4Q6Angsz9X9aa9" required>
           </div>
 
-
         <div class="row mt-4">
           <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
         </div>
@@ -132,6 +109,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   </main>
   <script src="/barberia/js/bootstrap.bundle.min.js"></script>
   <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+ 
 
   <script>
         document.getElementById('logoutButton').addEventListener('click', function() {

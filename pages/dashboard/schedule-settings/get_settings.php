@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
   $barberID = $row['id_barber'];
 } else {
   // Si no se encuentra el ID del barbero, redirige o muestra un error
-  echo json_encode(["error" => "No se encontró el barbero"]);
+  echo json_encode(["error" => "No se encontró el barberia"]);
   exit();
 }
 

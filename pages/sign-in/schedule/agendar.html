@@ -135,20 +135,20 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="fecha" class="form-label">Fecha:</label>
-                                    <input type="date" id="fecha" name="fecha" required><br>
+                                    <label for="selectfecha">Selecciona una fecha:</label>
+                                    <div id="selectfecha"></div>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="servicio" class="form-label">Servicio:</label>
-                                    <select class="form-select" id="servicio" name="servicio" required>
+                                    <select class="form-select" id="selectservicio" name="servicio" required>
                                         <option value="">Seleccione un servicio</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="hora" class="form-label">Hora:</label>
-                                    <select class="form-select" id="hora" name="hora" required>
+                                    <select class="form-select" id="selecthora" name="hora" required>
                                         <option value="">Selecciona una hora</option>
                                     </select>
                                 </div>
@@ -174,7 +174,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </footer>
     </div>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="/barberia/JS/jquery-3.7.1.min.js"></script>
     <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
     <script src="agendar.js"></script>
