@@ -6,10 +6,8 @@ $.ajax({
         // Verificar que sucursales sea un array
         if (Array.isArray(sucursales)) {
             sucursales.forEach(sucursal => {
-                console.log(sucursal.id_barber); // Imprimir para verificar el valor
-
                 // Agregar cada sucursal como una opción al select
-                $("#sucursal").append($('<option>', {
+                $("#selectSucursal").append($('<option>', {
                     value: sucursal.id_barber,
                     text: `Sucursal ${sucursal.id_barber}`
                 }));
