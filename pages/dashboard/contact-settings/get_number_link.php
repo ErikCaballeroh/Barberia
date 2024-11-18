@@ -1,34 +1,55 @@
 <?php
-// Conexion a la base de datos
-include '../conecction.php';
+session_start();
 
-// Verificar si el formulario fue enviado
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    // Sanear los datos del formulario para evitar SQL Injection
-    $whatsapp = $_POST['whatsapp'];
-    $maps = $_POST['maps'];
-    $branch_id = $_POST['branch'];  // El ID de la sucursal seleccionada (usando id_barber)
-
-    $whatsapp = $conn->real_escape_string($whatsapp);
-    $maps = $conn->real_escape_string($maps);
-    $branch_id = $conn->real_escape_string($branch_id);
-
-    // Actualizar el número de WhatsApp y el enlace de Google Maps para la sucursal seleccionada
-    $sql = "UPDATE barbers SET service_number = '$whatsapp', googlemaps_link = '$maps' WHERE id_barber = '$branch_id'";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<div class='alert alert-success'>Información actualizada correctamente.</div>";
-        
-        echo '<script>alert("cambios realizados");
-                    window.location = "/barberia/pages/dashboard/dashboard.html";
-        </script>';
-        exit;
-    } else {
-        echo "<div class='alert alert-danger'>Error al actualizar la información: " . $conn->error . "</div>";
-    }
-
-    // Cerrar la conexión
-    $conn->close();
+// Verificar si el usuario tiene el rol adecuado (rol 1 = administrador)
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+  // Si no es administrador, redirigir a la página de inicio
+  header('Location: /barberia/index.php');
+  exit();
 }
+
+// Conexión a la base de datos
+include '../conecction.php';
+// Obtener el id_user desde la sesión
+$id_user = $_SESSION['id'];
+
+// Obtener el ID del barbero correspondiente al usuario
+$sqlBarber = "SELECT id_barber FROM staff WHERE id_user = ?";
+$stmt = $conn->prepare($sqlBarber);
+$stmt->bind_param("i", $id_user);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$barberID = null;
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $barberID = $row['id_barber'];
+} else {
+    // Si no se encuentra el ID del barbero, retornar un error JSON
+    echo json_encode(["status" => "error", "message" => "No se encontró el barbero asociado a este usuario"]);
+    exit();
+}
+
+// Sanear los datos del formulario para evitar SQL Injection
+$whatsapp = $_POST['whatsapp'];
+$maps = $_POST['maps'];
+
+$whatsapp = $conn->real_escape_string($whatsapp);
+$maps = $conn->real_escape_string($maps);
+
+// Actualizar la información de la barbería
+$sqlUpdate = "UPDATE barbers SET service_number = ?, googlemaps_link = ? WHERE id_barber = ?";
+$stmt = $conn->prepare($sqlUpdate);
+$stmt->bind_param("ssi", $whatsapp, $maps, $barberID);
+
+if ($stmt->execute()) {
+    // Respuesta exitosa en formato JSON
+    echo json_encode(["status" => "success", "message" => "La información se actualizó correctamente."]);
+} else {
+    // Respuesta de error en formato JSON
+    echo json_encode(["status" => "error", "message" => "Hubo un error al actualizar la información."]);
+}
+
+// Cerrar la conexión
+$conn->close();
 ?>

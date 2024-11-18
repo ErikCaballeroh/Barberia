@@ -14,13 +14,12 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
 </head>
 
 <body>
-    <header>
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
                 <a class="navbar-brand" href="/barberia/index.php">
-                    <img src="/barberia/IMG/LOGO.png" alt="Logo" height="40" width="100"
-                        class="d-inline-block align-top col-6">
+                    <img src="/barberia/IMG/LOGO.png" alt="Logo" height="40" width="100" class="d-inline-block align-top col-6">
                     <span class="d-flex align-items-center col-6">
                         Rivera Barber Shop
                     </span>
@@ -32,48 +31,44 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link text-white" href="/barberia/pages/about/about.php">Sobre Nosotros</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/services/services.php">Servicios</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/barberia/pages/services/services.php">Servicios</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" href="/barberia/pages/contact/contact.php">Contáctanos</a>
                         </li>
                         <?php
                         //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
                         if (!isset($_SESSION["usuario"])): ?>
-                        <li class="nav-item text-white">
-                            <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
-                        </li>
+                            <li class="nav-item text-white">
+                                <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
+                            </li>
 
-                        <!--si existe-->
+                            <!--si existe-->
                         <?php else: ?>
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle"></i>
-                                <?php echo $_SESSION['username']; ?>
-                                <img src="/barberia/IMG/user.png" alt="Logo" class="d-inline-block align-top col-6">
-                            </a>
-                            <ul class="dropdown-menu">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
+                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 25px;">
+                                </a>
+                                <ul class="dropdown-menu">
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
-                                <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar
-                                        cita</a></li>
-                                <?php endif; ?>
-                                <!-- Verificación del rol -->
-                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
-                                <li><a class="dropdown-item"
-                                        href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>
-                                <?php endif; ?>
+                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <?php endif; ?>
+                                    <!-- Verificación del rol -->
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.php">Dashboard</a></li>
+                                    <?php endif; ?>
 
-                                <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
+                                    <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -135,20 +130,20 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="fecha" class="form-label">Fecha:</label>
-                                    <input type="date" id="fecha" name="fecha" required><br>
+                                    <label for="selectfecha">Selecciona una fecha:</label>
+                                    <div id="selectfecha"></div>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="servicio" class="form-label">Servicio:</label>
-                                    <select class="form-select" id="servicio" name="servicio" required>
+                                    <select class="form-select" id="selectservicio" name="servicio" required>
                                         <option value="">Seleccione un servicio</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="hora" class="form-label">Hora:</label>
-                                    <select class="form-select" id="hora" name="hora" required>
+                                    <select class="form-select" id="selecthora" name="hora" required>
                                         <option value="">Selecciona una hora</option>
                                     </select>
                                 </div>
@@ -174,13 +169,18 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </footer>
     </div>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="/barberia/JS/jquery-3.7.1.min.js"></script>
     <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
     <script src="agendar.js"></script>
 
 
-
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 
 </html>

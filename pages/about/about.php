@@ -1,20 +1,21 @@
 <?php
 session_start(); // Iniciar la sesión para acceder a las variables de sesión
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/barberia/css/Compartido.css">
-    <link rel="stylesheet" href="/barberia/css/Inicio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosostros</title>
+  <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="/barberia/CSS/sobrenosotros.css">
+  <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
 </head>
 
 <body>
-    <header>
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -97,96 +98,58 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
         </div>
     </div>
 
-    <main>
-        <!--Carrusel-->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide bg-dark bg-opacity-75">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="/barberia/IMG/carrusel.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                    <div
-                        class="carousel-caption d-flex align-items-center justify-content-center bg-light bg-opacity-50">
-                        <div>
-                            <h1 class="text-dark">Rivera Barber Shop</h1>
-                            <p class="text-dark">Regístrate para poder agendar citas, así como elegir el corte que
-                                deseas y
-                                poder conocer a nuestros barberos certificados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/barberia/IMG/carrusel-2.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="/barberia/IMG/carrusel-3.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+  <div class="container py-5">
+    <!-- Sección Sobre Nosotros -->
+    <div class="row mb-5">
+      <div class="col-md-6 text-center">
+        <h2 class="fw-bold">Sobre Nosotros</h2>
+        <p class="text-muted">Barberia Rivera Shop</p>
+        <p>En Barberia Rivera Shop tenemos como finalidad crear una experiencia total para nuestros usuarios contamos
+          con excelentes instalaciones, equipo de calidad y personal capacitado.</p>
+        <p>Tenemos la filosofía es siempre superar las expectativas de nuestros clientes para crear un diferenciador
+          permanente con nuestros competidores. Nuestra mejor recompensa es lograr que nuestros clientes se sientan como
+          en casa, con un servicio de calidad y nos recomienden.</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/sobrenosotros1.jpg" alt="Barberia" class="about-image">
+      </div>
+    </div>
+    <!-- Sección Sucursales -->
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <h2 class="fw-bold">Sucursales</h2>
+      </div>
+      <div class="col-md-6 text-center">
+        <!-- Ícono y Nombre de la Sucursal -->
+        <div class="icon-text mb-2">
+          <img src="/barberia/IMG/ubicacion.png" alt="Ubicación">
+          <span>San Pedro</span>
         </div>
-
-
-        <!--Trabajos-->
-        <div class="work-section text-center">
-            <div>
-                <h2>Nuestros trabajos</h2>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5">
-                    </div>
-                </div>
-            </div>
-    </main>
-    <!--Pie de pagina-->
-    <footer class="footer bg-dark text-white text-center py-4 mt-auto">
-        <div class="container">
-            <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
-            <div class="social-links mb-3">
-                <a href="https://instagram.com" target="_blank">Instagram</a> |
-                <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
-            </div>
-            <p class="mb-0">© 2024 Rivera Barber Shop</p>
-        </div>
-    </footer>
-    <script src="/barberia/js/bootstrap.bundle.min.js"></script>
-    <script src="/barberia/js/location.js"></script>
-
-    <script>
+        <!-- Botón de Ubicación -->
+        <a id="googleMapsLink" href="#" target="_blank" class="btn btn-dark mb-3 googleMapsLink googleMapsLink">Ubicación</a>
+        <p>En Barberia Rivera Shop no hacemos ninguna distinción ¡Todos son bienvenidos!</p>
+        <p>¡Los esperamos!</p>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/sobrenosotros2.jpg" alt="Barberia" class="branch-image">
+      </div>
+    </div>
+  </div>
+  <!--Pie de pagina-->
+  <footer class="footer bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+      <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
+      <div class="social-links mb-3">
+        <a href="https://instagram.com" target="_blank">Instagram</a> |
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
+      </div>
+      <p class="mb-0">© 2024 Rivera Barber Shop</p>
+    </div>
+  </footer>
+  <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/location.js"></script>
+  <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
             logoutModal.show();

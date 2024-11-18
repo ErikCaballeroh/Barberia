@@ -19,7 +19,7 @@
                             <img src="/barberia/IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
                         </a>
                         </div>
-                        <form action="/barberia/php/registrar.php" method="POST">
+                        <form id="registerForm" action="/barberia/php/registrar.php" method="POST" >
                             <fieldset>
                                 <legend class="text-center mb-4">Sign UP</legend>
                                 <div class="mb-3">
@@ -49,5 +49,7 @@
             </div>
         </main>
         <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
     </html>

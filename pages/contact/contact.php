@@ -2,19 +2,18 @@
 session_start(); // Iniciar la sesión para acceder a las variables de sesión
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/barberia/css/Compartido.css">
-    <link rel="stylesheet" href="/barberia/css/Inicio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactanos</title>
+  <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
 </head>
 
 <body>
-    <header>
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -96,97 +95,71 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
         </div>
     </div>
-
-    <main>
-        <!--Carrusel-->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide bg-dark bg-opacity-75">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+    
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <!-- Sección de Contacto -->
+      <div class="col-md-6">
+        <h2 class="mb-4">Contáctanos</h2>
+        <!-- Acordeón de Preguntas -->
+        <div class="accordion mb-4" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                ¿Aceptan tarjeta?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sí, aceptamos tarjetas de crédito y débito.
+              </div>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="/barberia/IMG/carrusel.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                    <div
-                        class="carousel-caption d-flex align-items-center justify-content-center bg-light bg-opacity-50">
-                        <div>
-                            <h1 class="text-dark">Rivera Barber Shop</h1>
-                            <p class="text-dark">Regístrate para poder agendar citas, así como elegir el corte que
-                                deseas y
-                                poder conocer a nuestros barberos certificados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/barberia/IMG/carrusel-2.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="/barberia/IMG/carrusel-3.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                ¿Necesito hacer una cita previa o aceptan clientes sin cita?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Aceptamos clientes sin cita, pero recomendamos hacer una cita para evitar esperas.
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+          </div>
         </div>
-
-
-        <!--Trabajos-->
-        <div class="work-section text-center">
-            <div>
-                <h2>Nuestros trabajos</h2>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5">
-                    </div>
-                </div>
-            </div>
-    </main>
-    <!--Pie de pagina-->
-    <footer class="footer bg-dark text-white text-center py-4 mt-auto">
-        <div class="container">
-            <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
-            <div class="social-links mb-3">
-                <a href="https://instagram.com" target="_blank">Instagram</a> |
-                <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
-            </div>
-            <p class="mb-0">© 2024 Rivera Barber Shop</p>
-        </div>
-    </footer>
-    <script src="/barberia/js/bootstrap.bundle.min.js"></script>
-    <script src="/barberia/js/location.js"></script>
-
-    <script>
+        <!-- Botón de WhatsApp -->
+        <a id="whatsappButton" class="btn btn-success d-flex align-items-center">
+          <img src="/barberia/IMG/WhatsApp_icon.png" alt="WhatsApp" style="width: 20px; margin-right: 8px;">
+          WhatsApp
+        </a>
+      </div>
+      <!-- Imagen -->
+      <div class="col-md-6 text-center">
+        <img src="/barberia/IMG/barb_cont.jpg" alt="Barbería" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+  <!--Pie de pagina-->
+  <footer class="footer bg-dark text-white text-center py-4 mt-auto">
+    <div class="container">
+      <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
+      <div class="social-links mb-3">
+        <a href="https://instagram.com" target="_blank">Instagram</a> |
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
+      </div>
+      <p class="mb-0">© 2024 Rivera Barber Shop</p>
+    </div>
+  </footer>
+  <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/location.js"></script>
+  <script src="contact.js"></script>
+  <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
             logoutModal.show();

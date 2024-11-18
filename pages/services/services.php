@@ -16,7 +16,6 @@ session_start();
 
 <body>
 <header>
-<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -33,13 +32,13 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/barberia/pages/about/about.html">Sobre Nosotros</a>
+                            <a class="nav-link text-white" href="/barberia/pages/about/about.php">Sobre Nosotros</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/services/services.php">Servicios</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/barberia/pages/services/services.php">Servicios</a>
                         </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link" href="/barberia/pages/contact/contact.html">Contáctanos</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" href="/barberia/pages/contact/contact.php">Contáctanos</a>
                         </li>
                         <?php
                         //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
@@ -56,13 +55,15 @@ session_start();
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
-                                    <img src="3" alt="Logo" class="d-inline-block align-top col-6">
+                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 25px;">
                                 </a>
                                 <ul class="dropdown-menu">
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
                                     <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <?php endif; ?>
                                     <!-- Verificación del rol -->
                                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
-                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.php">Dashboard</a></li>
                                     <?php endif; ?>
 
                                     <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
@@ -135,13 +136,20 @@ session_start();
       <div class="social-links mb-3">
         <a href="https://instagram.com" target="_blank">Instagram</a> |
         <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://maps.google.com" target="_blank">Google Maps</a>
+        <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
       </div>
       <p class="mb-0">© 2024 Rivera Barber Shop</p>
     </div>
   </footer>
   <script src="servicios.js"></script>
   <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/location.js"></script>
   
+  <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+    </script>
 </body>
 </html>

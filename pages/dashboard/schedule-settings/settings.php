@@ -1,20 +1,31 @@
 <?php
-session_start(); // Iniciar la sesión para acceder a las variables de sesión
+// get_users.php
+
+// Iniciar sesión para acceder a las variables de sesión
+session_start();
+
+// Verificar si el usuario tiene el rol adecuado (rol 1 = administrador)
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
+  // Si no es administrador, redirigir a la página de inicio
+  header('Location: /barberia/index.php');
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/barberia/css/Compartido.css">
-    <link rel="stylesheet" href="/barberia/css/Inicio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario</title>
+  <link rel="stylesheet" href="/barberia/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/barberia/css/Compartido.css">
+  <link rel="stylesheet" href="/barberia/css/Inicio.css">
+  <link rel="stylesheet" href="/barberia/css/datatables.min.css">
 </head>
 
 <body>
-    <header>
+<header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -97,96 +108,96 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
         </div>
     </div>
 
-    <main>
-        <!--Carrusel-->
-        <div id="carouselExampleDark" class="carousel carousel-dark slide bg-dark bg-opacity-75">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="/barberia/IMG/carrusel.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                    <div
-                        class="carousel-caption d-flex align-items-center justify-content-center bg-light bg-opacity-50">
-                        <div>
-                            <h1 class="text-dark">Rivera Barber Shop</h1>
-                            <p class="text-dark">Regístrate para poder agendar citas, así como elegir el corte que
-                                deseas y
-                                poder conocer a nuestros barberos certificados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/barberia/IMG/carrusel-2.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="/barberia/IMG/carrusel-3.png" class="d-block w-100" alt="..."
-                        style="height: 600px; object-fit: cover;">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+  <main class="container py-5">
+    <h2 class="fa-1 fw-bold mb-3">
+      Establecer horario
+    </h2>
+    <form class="form row gap-5" id="form-settings">
+      <section class="col-4 d-flex flex-column">
+        <div class="mb-3 row">
+          <label for="opening-time" class="form-label fst-italic">Hora de apertura</label>
+          <select name="opening-time" class="form-select py-2 border border-dark" id="opening-time">
+            <option value="" default>Selecciona una hora</option>
+          </select>
         </div>
 
-
-        <!--Trabajos-->
-        <div class="work-section text-center">
-            <div>
-                <h2>Nuestros trabajos</h2>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4">
-                    </div>
-                    <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5">
-                    </div>
-                </div>
-            </div>
-    </main>
-    <!--Pie de pagina-->
-    <footer class="footer bg-dark text-white text-center py-4 mt-auto">
-        <div class="container">
-            <h4 class="footer-title">Redes de Rivera Barber Shop</h4>
-            <div class="social-links mb-3">
-                <a href="https://instagram.com" target="_blank">Instagram</a> |
-                <a href="https://facebook.com" target="_blank">Facebook</a> |
-                <a id="googleMapsLink" class="googleMapsLink" href="#" target="_blank">Google Maps</a>
-            </div>
-            <p class="mb-0">© 2024 Rivera Barber Shop</p>
+        <div class="mb-3 row">
+          <label for="closing-time" class="form-label fst-italic">Hora de cierre</label>
+          <select name="closing-time" class="form-select py-2 border border-dark" id="closing-time">
+            <option value="" default>Selecciona una hora</option>
+          </select>
         </div>
-    </footer>
-    <script src="/barberia/js/bootstrap.bundle.min.js"></script>
-    <script src="/barberia/js/location.js"></script>
 
-    <script>
+        <div class="mb-3 row">
+          <label for="max-clients" class="form-label fst-italic">Clientes por hora</label>
+          <input type="number" name="max-clients" class="form-control py-2 border border-dark"
+            placeholder='Numero de horas ej. "3"' id="max-clients">
+        </div>
+
+        <div class="row mt-auto">
+          <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
+        </div>
+      </section>
+
+      <section class="col-6 ps-4">
+        <label for="time" class="form-label fst-italic mb-3">Dias de servicio</label>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="domingo" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="domingo">
+            Domingo
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="lunes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="lunes">
+            Lunes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="martes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="martes">
+            Martes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="miercoles" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="miercoles">
+            Miercoles
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="jueves" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="jueves">
+            Jueves
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="viernes" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="viernes">
+            Viernes
+          </label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" name="sabado" class="form-check-input p-2 border border-dark">
+          <label class="form-check-label ms-3" for="sabado">
+            Sabado
+          </label>
+        </div>
+      </section>
+    </form>
+  </main>
+  <script src="/barberia/js/bootstrap.bundle.min.js"></script>
+  <script src="/barberia/js/jquery-3.7.1.min.js"></script>
+  <script src="/Barberia/JS/sweetalert2.all.min.js"></script>
+  <script src="settings_handler.js"></script>
+  <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
             logoutModal.show();
