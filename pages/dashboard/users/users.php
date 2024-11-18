@@ -22,6 +22,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
   <link rel="stylesheet" href="/barberia/css/Compartido.css">
   <link rel="stylesheet" href="/barberia/css/Inicio.css">
   <link rel="stylesheet" href="/barberia/css/datatables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>

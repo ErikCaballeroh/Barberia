@@ -91,11 +91,15 @@ $(document).ready(function () {
       data: formData,
       dataType: "json", // Asegúrate de recibir la respuesta como JSON
       success: function (response) {
-        console.log("Respuesta del servidor:", response); // Ver la respuesta del servidor
+
 
         // Si la respuesta es exitosa
         if (response.success) {
-          alert(response.message); // Mostrar mensaje de éxito
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: response.message,
+          }); // Mostrar mensaje de éxito
           table.ajax.reload(); // Recargar la tabla
           $("#editUserModal").modal("hide"); // Ocultar el modal
         } else {
