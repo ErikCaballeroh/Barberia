@@ -11,10 +11,15 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <title>Citas</title>
     <link rel="stylesheet" href="/barberia/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="/barberia/CSS/Compartido.css">
+
+    <!-- DatePicker -->
+    <link rel="stylesheet" href="/barberia/pickadate/default.css">
+    <link rel="stylesheet" href="/barberia/pickadate/default.date.css">
+    <link rel="stylesheet" href="/barberia/pickadate/default.time.css">
 </head>
 
 <body>
-<header>
+    <header>
         <!--Barra de navegacion-->
         <nav class="navbar navbar-expand-lg navbar-dark  py-3 $black">
             <div class="container">
@@ -57,8 +62,8 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                                     <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 25px;">
                                 </a>
                                 <ul class="dropdown-menu">
-                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
-                                    <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
                                     <?php endif; ?>
                                     <!-- Verificación del rol -->
                                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
@@ -99,59 +104,48 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
 
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
-            <div class="container my-5">
+            <div class="container my-3">
                 <div class="row justify-content-between g-4">
                     <!-- Citas Disponibles -->
                     <div class="col-12 col-md-6">
-                        <h1>Citas Disponibles</h1>
-                        <p id="mensajeSinCita" class="d-none">Citas no disponibles</p>
-                        <div id="cuadroCita" class="card d-none mb-4 p-3 shadow-sm">
-                            <h2>Detalles de tu Cita</h2>
-                            <p><strong>Fecha:</strong> <span id="fecha"></span></p>
-                            <p><strong>Hora:</strong> <span id="hora"></span></p>
-                            <p><strong>Sucursal:</strong> <span id="sucursal"></span></p>
-                            <button class="btn btn-danger">Cancelar Cita</button>
-                        </div>
+                        <h2>Tus citas</h1>
                     </div>
 
                     <!-- Formulario para Agendar Cita -->
-                    <div class="col-12 col-md-6">
-                        <form class="bg-white p-4 rounded shadow-sm" id="appointmentForm">
-                            <fieldset>
-                                <legend class="text-center">
-                                    <h1>Agendar tu cita</h1>
-                                </legend>
+                    <form class="col-12 col-md-6 bg-white px-5" id="appointmentForm">
+                        <h2 class="fa-1 fw-bold mb-3">
+                            Agendar cita
+                        </h2>
+                        <div class="mb-3 row">
+                            <label for="barber" class="form-label fst-italic">Sucursal</label>
+                            <select name="barber" class="form-select py-2 border border-dark" id="select-sucursales">
+                                <option value="" default>Selecciona una sucursal</option>
+                            </select>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="sucursal" class="form-label">Sucursal:</label>
-                                    <select class="form-select" id="selectSucursal" name="sucursal" required>
-                                        <option value="">Seleccione una sucursal</option>
-                                    </select>
-                                </div>
+                        <div class="mb-3 row" id="service-control">
+                            <label for="service" class="form-label fst-italic">Servicio</label>
+                            <select name="service" class="form-select py-2 border border-dark" id="select-service">
+                                <option value="" default>Selecciona un servicio</option>
+                            </select>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="selectfecha">Selecciona una fecha:</label>
-                                    <div id="selectfecha"></div>
-                                </div>
+                        <div class="mb-3 row" id="date-control">
+                            <label for="appointment-date" class="form-label fst-italic">Fecha</label>
+                            <input type="text" name="appointment-date" class="form-control py-2 border border-dark"
+                                placeholder='Selecciona una fecha' id="datepicker">
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="servicio" class="form-label">Servicio:</label>
-                                    <select class="form-select" id="selectservicio" name="servicio" required>
-                                        <option value="">Seleccione un servicio</option>
-                                    </select>
-                                </div>
+                        <div class="mb-3 row" id="time-control">
+                            <label for="appointment-time" class="form-label fst-italic">Hora</label>
+                            <input type="text" name="appointment-time" class="form-control py-2 border border-dark"
+                                placeholder='Selecciona una hora (Varia segun disponibilidad)' id="timepicker">
+                        </div>
 
-                                <div class="mb-3">
-                                    <label for="hora" class="form-label">Hora:</label>
-                                    <select class="form-select" id="selecthora" name="hora" required>
-                                        <option value="">Selecciona una hora</option>
-                                    </select>
-                                </div>
-
-                                <button type="submit" class="btn btn-dark w-100" id="submitBtn">Agendar</button>
-                            </fieldset>
-                        </form>
-                    </div>
+                        <div class="row mt-5">
+                            <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>
@@ -172,6 +166,8 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="/barberia/JS/jquery-3.7.1.min.js"></script>
     <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
+    <script src="/Barberia/pickadate/pickadate.js"></script>
+    <script src="/Barberia/js/sweetalert2.all.min.js"></script>
     <script src="agendar.js"></script>
 
 

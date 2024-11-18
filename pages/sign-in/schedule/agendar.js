@@ -1,121 +1,142 @@
-$.ajax({
-    url: 'sucursales.php',  // El archivo PHP que obtiene los empleados
-    type: 'GET',            // Usamos el método GET
-    dataType: 'json',       // Esperamos una respuesta en formato JSON
-    success: function (sucursales) {
-        // Verificar que sucursales sea un array
-        if (Array.isArray(sucursales)) {
-            sucursales.forEach(sucursal => {
-                // Agregar cada sucursal como una opción al select
-                $("#selectSucursal").append($('<option>', {
-                    value: sucursal.id_barber,
-                    text: `Sucursal ${sucursal.id_barber}`
-                }));
-            });
-        } else {
-            console.error('La respuesta no es un array:', sucursales);
-        }
-    },
-    error: function () {
-        alert('Hubo un error al cargar las sucursales.');
-    }
-});
-
-// Al cambiar sucursal, cargar días disponibles
-$('#selectSucursal').on('change', function () {
-    const idBarber = $(this).val();
-    if (idBarber) {
-        $.ajax({
-            url: 'get_dias_disponibles.php',
-            method: 'GET',
-            data: { idBarber },
-            dataType: 'json',
-            success: function (diasDisponibles) {
-                $('#selectfecha').flatpickr({
-                    dateFormat: 'Y-m-d',
-                    disable: [
-                        function (date) {
-                            const day = date.toLocaleString('en-US', { weekday: 'long' }).toLowerCase();
-                            return !diasDisponibles.includes(day);
-                        }
-                    ]
-                });
-            },
-            error: function () {
-                alert('Error al cargar los días disponibles.');
-            }
+function getBarbers() {
+    $.ajax({
+        url: "sucursales.php",
+        type: "GET",
+        dataType: "json",
+        crossDomain: true
+    }).done(function (sucursales) {
+        sucursales.forEach(sucursal => {
+            // Agregar cada sucursal como una opción al select
+            $("#select-sucursales").append($('<option>', {
+                value: sucursal.id_barber,
+                text: `Sucursal ${sucursal.id_barber}`
+            }));
         });
-    }
-});
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    })
+}
 
-$('#selectSucursal').on('change', function () {
-    const idBarber = $(this).val(); // Obtener el id del barbero seleccionado
-    if (idBarber) {
-        $.ajax({
-            url: 'get_dias_disponibles.php',  // URL del archivo PHP para obtener los días disponibles
-            method: 'GET',
-            data: { idBarber },
-            dataType: 'json',
-            success: function (diasDisponibles) {
-                // Si ya existe una instancia de flatpickr, la destruimos para reiniciarla
-                if ($('#selectfecha').flatpickr) {
-                    $('#selectfecha').flatpickr().destroy();
+function getServices() {
+    $.ajax({
+        url: "get_servicios.php",
+        type: "GET",
+        dataType: "json",
+        crossDomain: true
+    }).done(function (services) {
+        services.forEach(service => {
+            // Agregar cada service como una opción al select
+            $("#select-service").append($('<option>', {
+                value: service.id_service,
+                text: service.name
+            }));
+        });
+
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    })
+}
+
+function getServiceDays() {
+    $.ajax({
+        url: "get_service_days.php",
+        type: "GET",
+        dataType: "json",
+        data: { barber_id: 1 },
+        crossDomain: true
+    }).done(function (result) {
+        console.log($("#select-sucursales").val())
+        console.log(result)
+        let disableDays = []
+
+        // Recorrer la respuesta para identificar días deshabilitados
+        result.forEach((daysArray) => {
+            daysArray.forEach((day, i) => {
+                if (day === '0' && !disableDays.includes(i + 1)) {
+                    disableDays.push(i + 1);
                 }
-
-                // Inicializamos flatpickr con los días habilitados
-                $('#selectfecha').flatpickr({
-                    dateFormat: 'Y-m-d', // Formato compatible con MySQL
-                    disable: [
-                        function (date) {
-                            const day = date.toLocaleString('en-US', { weekday: 'long' }).toLowerCase();
-                            // Deshabilitar el día si no está en el array de días disponibles
-                            return !diasDisponibles.includes(day);
-                        }
-                    ],
-                    inline: true // Mostrar el calendario directamente sin necesidad de un campo de texto
-                });
-            },
-            error: function () {
-                alert('Error al cargar los días disponibles.');
-            }
-        });
-    }
-});
-// Cargar servicios al cargar la página
-$(document).ready(function () {
-    $.ajax({
-        url: 'get_servicios.php',
-        method: 'GET',
-        dataType: 'json',
-        success: function (servicios) {
-            servicios.forEach(servicio => {
-                $('#selectservicio').append(
-                    `<option value="${servicio.id_service}">${servicio.name}</option>`
-                );
             });
-        },
-        error: function () {
-            alert('Error al cargar los servicios.');
-        }
+        });
+
+        console.log(disableDays)
+        // Cambiar configuracion del datepicker
+        $("#datepicker").pickadate('picker').set('disable', disableDays);
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "DaysOops...",
+            text: error,
+        });
+    })
+}
+
+function getOpenCloseTime() {
+    $.ajax({
+        url: "get_open_close_time.php",
+        type: "GET",
+        dataType: "json",
+        crossDomain: true
+    }).done(function (result) {
+        console.log(result)
+
+        $('#timepicker').pickatime({
+            interval: 60,
+            min: [result.opening_hour, 0],
+            max: [result.closing_hour, 0]
+        })
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    })
+}
+
+$(document).ready(function () {
+    getBarbers()
+    getServices()
+    // getServiceDays()
+    getOpenCloseTime()
+
+    $("#datepicker").pickadate({
+        monthsFull: [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ],
+        monthsShort: [
+            'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+            'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+        ],
+        weekdaysFull: [
+            'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'
+        ],
+        weekdaysShort: [
+            'Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'
+        ],
+        today: 'Hoy',
+        clear: 'Limpiar',
+        close: 'Cerrar',
+        format: 'dd/mm/yyyy',
     });
+
+    // $("#date-control").hide()
+    $("#time-control").hide()
 });
 
-// Al enviar formulario, agendar cita
-$('#appointmentForm').on('submit', function (e) {
-    e.preventDefault();
-    $.ajax({
-        url: 'agendar_cita.php',
-        method: 'POST',
-        data: $(this).serialize(),
-        dataType: 'json',
-        success: function (response) {
-            alert(response.message);
-            if (response.success) {
-                $('#appointmentForm')[0].reset();
-            }
-        },
-        error: function () {
-            alert('Error al agendar la cita.');
-        }
-    });
-});
+$("#select-sucursales").change(function () {
+    if ($(this).val() !== "") {
+        $("#date-control").show()
+        getServiceDays()
+    } else {
+        $("#date-control").hide()
+    }
+})
