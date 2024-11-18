@@ -133,7 +133,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
           </div>
         </div>
         <!-- Botón de WhatsApp -->
-        <a id="whatsappButton" class="btn btn-success d-flex align-items-center">
+        <a id="whatsappButton" class="btn btn-success d-flex align-items-center" target="_blank">
           <img src="/barberia/IMG/WhatsApp_icon.png" alt="WhatsApp" style="width: 20px; margin-right: 8px;">
           WhatsApp
         </a>
