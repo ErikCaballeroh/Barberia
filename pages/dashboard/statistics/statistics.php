@@ -39,37 +39,35 @@
                             <a class="nav-link" href="/pages/contact/contact.html">Contáctanos</a>
                         </li>
                         <?php
-                    //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
-                    if (!isset($_SESSION["usuario"])): ?>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
-                        </li>
+                        //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
+                        if (!isset($_SESSION["usuario"])): ?>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-light mx-1" href="/barberia/pages/sign-in/sign-in.php">Sign In</a>
+                            </li>
 
-                        <!--si existe-->
+                            <!--si existe-->
                         <?php else: ?>
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle"></i>
-                                <?php echo $_SESSION['username']; ?>
-                                <img src="3" alt="Logo" class="d-inline-block align-top col-6">
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar
-                                        cita</a></li>
-                                <!-- Verificación del rol -->
-                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
-                                <li><a class="dropdown-item"
-                                        href="/barberia/pages/dashboard/dashboard.html">Dashboard</a></li>
-                                <?php endif; ?>
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
+                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 30px;">
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+                                    <?php endif; ?>
+                                    <!-- Verificación del rol -->
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
+                                        <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.php">Dashboard</a></li>
+                                    <?php endif; ?>
 
-                                <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
+                                    <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
                         <?php endif; ?>
                     </ul>
                 </div>
