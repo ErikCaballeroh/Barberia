@@ -72,13 +72,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                   style="width: 30px; height: 25px;">
               </a>
               <ul class="dropdown-menu">
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
-                <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
-                <?php endif; ?>
-                <!-- Verificación del rol -->
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
-                <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.php">Dashboard</a></li>
-                <?php endif; ?>
+              <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
+                  <!-- Solo se muestra Agendar cita si el rol es 2 -->
+                  <li><a class="dropdown-item" href="/barberia/pages/sign-in/schedule/agendar.php">Agendar cita</a></li>
+              <?php else: ?>
+                  <!-- Si el rol no es 2 (puede ser 1 u otro número), muestra Dashboard -->
+                  <li><a class="dropdown-item" href="/barberia/pages/dashboard/dashboard.php">Dashboard</a></li>
+              <?php endif; ?>
 
                 <li><a id="logoutButton" class="dropdown-item" href="#">cerrar sesion</a></li>
 
