@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#myTable").DataTable({
     ajax: {
-      url: "getAppointments.php",
+      url: "Appointments.php",
       type: "GET",
       dataType: "json",
       dataSrc: "",

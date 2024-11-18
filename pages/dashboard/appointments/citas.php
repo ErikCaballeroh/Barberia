@@ -112,7 +112,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
         </div>
 
   <main class="container py-5">
-
     <table id="myTable" class="table">
       <thead>
         <tr>

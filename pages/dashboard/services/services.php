@@ -53,8 +53,8 @@
                     <a class="nav-link text-white" href="/barberia/pages/contact/contact.php">Contáctanos</a>
                     </li>
                     <?php
-                                //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
-                                if (!isset($_SESSION["usuario"])): ?>
+                    //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
+                    if (!isset($_SESSION["usuario"])): ?>
                     <li class="nav-item text-white">
                     <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
                     </li>

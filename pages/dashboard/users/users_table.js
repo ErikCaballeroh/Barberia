@@ -47,7 +47,21 @@ $(document).ready(function () {
     pageLength: 5,
     lengthMenu: [5, 10, 15, 20],
   });
-  // Corregir la línea aquí, usando correctamente jQuery
+
+  $('#myTable').on('click', '.toggle-password', function () {
+    let passwordSpan = $(this).siblings('.password');
+    let currentPassword = passwordSpan.data('password');
+
+    if (passwordSpan.text() === "***************") {
+      passwordSpan.text(currentPassword); // Mostrar la contraseña
+      $(this).text("Ocultar"); // Cambiar texto del botón a "Ocultar"
+    } else {
+      passwordSpan.text("***************"); // Ocultar la contraseña
+      $(this).text("Ver"); // Cambiar texto del botón a "Ver"
+    }
+  });
+
+
   $("#myTable").on("click", ".edit-btn", function () {
     // Obtener los datos de la fila donde se hizo clic
     let rowData = table.row($(this).parents("tr")).data();

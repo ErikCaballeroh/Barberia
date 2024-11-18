@@ -115,7 +115,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
 
   <main class="container py-5">
     <h2 class="fa-1 fw-bold mb-3">
-      Establecer horario
+    Editar Contacto
     </h2>
     <form id="update-form" class="form row gap-5">
       <section class="col-4 d-flex flex-column">
