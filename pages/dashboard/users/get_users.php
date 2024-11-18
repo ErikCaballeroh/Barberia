@@ -15,16 +15,23 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
 include '../conecction.php';
 
 // Consulta para obtener los usuarios con id_role = 2
-$sql = "SELECT username, password, email FROM users WHERE id_role = 2";
+$sql = "SELECT id_user, username, password, email FROM users WHERE id_role = 2";
 $result = $conn->query($sql);
+
+// Verificar si la consulta fue exitosa
+if (!$result) {
+    echo json_encode(['success' => false, 'error' => 'Error en la consulta: ' . $conn->error]);
+    $conn->close();
+    exit();
+}
 
 // Arreglo para almacenar los datos
 $users = [];
 
 if ($result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-    $users[] = $row;
-  }
+    while ($row = $result->fetch_assoc()) {
+        $users[] = $row;
+    }
 }
 
 // Cerrar conexión
@@ -32,3 +39,4 @@ $conn->close();
 
 // Devolver los datos en formato JSON
 echo json_encode($users);
+?>
