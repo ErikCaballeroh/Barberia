@@ -54,7 +54,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                 </li>
                 <?php
                             //Si el usuario no está logueado, mostrar los botones de Sign In y Sign Up 
-                            if (!isset($_SESSION["usuario"])): ?>
+                 if (!isset($_SESSION["usuario"])): ?>
                 <li class="nav-item text-white">
                 <a class="btn btn-outline-light mx-1" href="/barberia/pages/sign-up/sign-up.php">Sign Up</a>
                 </li>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                     <i class="bi bi-person-circle"></i>
                     <?php echo $_SESSION['username']; ?>
                     <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle"
-                    style="width: 30px; height: 25px;">
+                    style="width: 30px; height: 30px;">
                 </a>
                 <ul class="dropdown-menu">
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>

@@ -57,7 +57,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                     <i class="bi bi-person-circle"></i>
                     <?php echo $_SESSION['username']; ?>
                     <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle"
-                    style="width: 30px; height: 25px;">
+                    style="width: 30px; height: 30px;">
                 </a>
                 <ul class="dropdown-menu">
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
@@ -157,22 +157,24 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             <div class="d-flex justify-content-center">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1">
+                        <img src="/barberia/IMG/trabajos-1.png" class="img-thumbnail" alt="Trabajo 1" style="width: 100%; height: auto;">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2">
+                        <img src="/barberia/IMG/trabajos-2.png" class="img-thumbnail" alt="Trabajo 2" style="width: 100%; height: auto;">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3">
+                        <img src="/barberia/IMG/trabajos-3.png" class="img-thumbnail" alt="Trabajo 3" style="width: 100%; height: auto;">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4">
+                        <img src="/barberia/IMG/trabajos-4.png" class="img-thumbnail" alt="Trabajo 4" style="width: 100%; height: auto;">
                     </div>
                     <div class="col-12 col-md-2 mb-3">
-                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5">
+                        <img src="/barberia/IMG/trabajos-5.png" class="img-thumbnail" alt="Trabajo 5" style="width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
+
+            
     </main>
     <!--Pie de pagina-->
     <footer class="footer bg-dark text-white text-center py-4 mt-auto">

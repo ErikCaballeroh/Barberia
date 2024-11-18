@@ -65,7 +65,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i> <?php echo $_SESSION['username']; ?>
-                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 25px;">
+                                    <img src="/barberia/IMG/icono.png" alt="User Icon" class="rounded-circle" style="width: 30px; height: 30px;">
                                 </a>
                                 <ul class="dropdown-menu">
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 2): ?>
