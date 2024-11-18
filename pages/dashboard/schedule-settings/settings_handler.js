@@ -22,7 +22,11 @@ function getSettings() {
     })
 
   }).fail(function (xhr, status, error) {
-    alert(error)
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error,
+    });
   })
 }
 
@@ -54,7 +58,11 @@ function updateSettings(formData) {
     }
 
   }).fail(function (xhr, status, error) {
-    alert(error)
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error,
+    });
   })
 }
 

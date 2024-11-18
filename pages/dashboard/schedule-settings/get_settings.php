@@ -14,7 +14,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
 // Conexión a la base de datos
 include '../conecction.php';
 
-// Obtener el ID del barbero correspondiente al usuario
+// Obtener el ID de la barberia correspondiente al usuario
 $sqlBarber = "SELECT id_barber FROM staff WHERE id_user = ?";
 $stmt = $conn->prepare($sqlBarber);
 $stmt->bind_param("i", $_SESSION['id']);
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
   $barberID = $row['id_barber'];
 } else {
-  // Si no se encuentra el ID del barbero, redirige o muestra un error
+  // Si no se encuentra el ID de la barberia, redirige o muestra un error
   echo json_encode(["error" => "No se encontró el barbero"]);
   exit();
 }
