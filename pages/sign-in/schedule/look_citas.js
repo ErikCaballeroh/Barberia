@@ -10,22 +10,23 @@ $(document).ready(function () {
                     let citasHtml = ''; // Variable para construir el contenido dinámico
                     data.forEach((cita, index) => {
                         citasHtml += `
-                            <tr>
-                                <td>${index + 1}</td>
-                                <td>${cita.user}</td>
-                                <td>${cita.date}</td>
-                                <td>${cita.time}</td>
-                                <td>${cita.service}</td>
-
-                            <td>
-                                    <button class="btn btn-danger btn-sm eliminar-cita" data-id="${cita.id_appointment}">Eliminar</button>
-                                </td>
-                            </tr>
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cita #${index + 1}</h5>
+                                        <p class="card-text"><strong>Usuario:</strong> ${cita.user}</p>
+                                        <p class="card-text"><strong>Fecha:</strong> ${cita.date}</p>
+                                        <p class="card-text"><strong>Hora:</strong> ${cita.time}</p>
+                                        <p class="card-text"><strong>Servicio:</strong> ${cita.service}</p>
+                                        <button class="btn btn-danger btn-sm eliminar-cita" data-id="${cita.id_appointment}">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
                         `;
                     });
-                    $('#citas-body').html(citasHtml); // Inserta las citas en la tabla
+                    $('#citas-container').html(citasHtml); // Inserta las citas en el contenedor
                 } else {
-                    $('#citas-body').html('<tr><td colspan="5">No hay citas disponibles.</td></tr>');
+                    $('#citas-container').html('<p>No hay citas disponibles.</p>');
                 }
             },
             error: function (xhr, status, error) {
@@ -58,7 +59,7 @@ $(document).ready(function () {
     }
 
     // Delegación de evento para manejar el clic en los botones "Eliminar"
-    $('#citas-body').on('click', '.eliminar-cita', function () {
+    $('#citas-container').on('click', '.eliminar-cita', function () {
         const idCita = $(this).data('id');
         if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
             eliminarCita(idCita);

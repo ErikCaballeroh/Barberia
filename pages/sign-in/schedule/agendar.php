@@ -105,6 +105,14 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
             <div class="container my-3">
+             <!-- Citas Disponibles -->
+             <div class="col-12 col-lg-6 order-2 order-lg-1">
+                    <h1 class="mb-4 text-center">Tus Citas</h1>
+                    <div id="citas-container" class="row g-4">
+                        <!-- Aquí se insertarán dinámicamente las citas como tarjetas -->
+                    </div>
+                </div>
+            
                 <div class="row g-4">
                     <!-- Formulario para Agendar Cita -->
                     <form class="col-12 col-md-6 bg-white px-5 order-1 order-lg-2" id="appointmentForm">
@@ -145,28 +153,6 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
             </div>
 
             <!-- Citas Disponibles -->
-            <div class="col-12 col-lg-6 order-2 order-lg-1">
-                        <h1 class="mb-4 text-center">Tus Citas</h1>
-                        <div id="citas-container">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Usuario</th>
-                                            <th>Fecha</th>
-                                            <th>Hora</th>
-                                            <th>Servicio</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="citas-body">
-                                        <!-- Aquí se insertarán dinámicamente las citas -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                                                                    
-                    </div>
             
         </main>
 
