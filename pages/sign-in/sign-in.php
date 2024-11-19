@@ -19,10 +19,10 @@
                 <div class="col-md-6">
                     <div class="logo text-center mb-4">
                         <a href="/barberia/index.php">
-                            <img src="../../IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                            <img src="/barberia/IMG/LOGO.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
                         </a>
                     </div>
-                    <form form action="/barberia/php/ya-registrado.php" method="POST">
+                    <form form method="POST"action="/barberia/php/ya-registrado.php" >
                         <fieldset>
                             <legend class="text-center mb-4">Sign IN</legend>
                             <div class="mb-3">

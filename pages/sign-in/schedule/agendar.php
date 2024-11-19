@@ -105,14 +105,9 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
             <div class="container my-3">
-                <div class="row justify-content-between g-4">
-                    <!-- Citas Disponibles -->
-                    <div class="col-12 col-md-6">
-                        <h2>Tus citas</h1>
-                    </div>
-
+                <div class="row g-4">
                     <!-- Formulario para Agendar Cita -->
-                    <form class="col-12 col-md-6 bg-white px-5" id="appointmentForm">
+                    <form class="col-12 col-md-6 bg-white px-5 order-1 order-lg-2" id="appointmentForm">
                         <h2 class="fa-1 fw-bold mb-3">
                             Agendar cita
                         </h2>
@@ -148,6 +143,31 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
                     </form>
                 </div>
             </div>
+
+            <!-- Citas Disponibles -->
+            <div class="col-12 col-lg-6 order-2 order-lg-1">
+                        <h1 class="mb-4 text-center">Tus Citas</h1>
+                        <div id="citas-container">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Usuario</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Servicio</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="citas-body">
+                                        <!-- Aquí se insertarán dinámicamente las citas -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                                                                    
+                    </div>
+            
         </main>
 
         <!-- Footer -->
@@ -169,6 +189,7 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <script src="/Barberia/pickadate/pickadate.js"></script>
     <script src="/Barberia/js/sweetalert2.all.min.js"></script>
     <script src="agendar.js"></script>
+    <script src="look_citas.js"></script>
 
 
     <script>

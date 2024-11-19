@@ -13,7 +13,6 @@ $validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE email='$corr
 
 //validar login
 if (mysqli_num_rows($validar_login) > 0) {
-    $_SESSION['usuario'] = $correo;
     $usuario = mysqli_fetch_assoc($validar_login);
 
     // Verificar la contraseña ingresada con el hash de la base de datos
