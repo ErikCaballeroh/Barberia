@@ -1,10 +1,10 @@
 <?php
 // Incluir la conexión a la base de datos.
-include'conexion.php';
+include 'conexion.php';
 
 // Consulta para obtener el enlace de Google Maps y el número de WhatsApp
 $sql = "SELECT googlemaps_link FROM barbers WHERE id_barber = 1";
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 
 // Verificar si la consulta trae resultados
 if ($result->num_rows > 0) {
@@ -18,5 +18,4 @@ if ($result->num_rows > 0) {
 }
 
 // Cerrar la conexión
-$conn->close();
-?>
+$conexion->close();

@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
     $categories = [];
     while ($row = $result->fetch_assoc()) {
         $category_id = $row['id_category'];
-        
+
         if (!isset($categories[$category_id])) {
             $categories[$category_id] = [
                 "id_category" => $row['id_category'],
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
                 "services" => []
             ];
         }
-        
+
         $categories[$category_id]['services'][] = [
             "id_service" => $row['id_service'],
             "service_name" => $row['service_name'],
@@ -59,4 +59,3 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-?>

@@ -4,7 +4,7 @@ const googleMapsLink = document.getElementById('googleMapsLink');
 // Verificar si el enlace existe antes de proceder
 if (googleMapsLink) {
   // Hacer una solicitud AJAX para obtener los datos
-  fetch('/barberia/pages/php/getLocation.php')
+  fetch('/barberia/php/getLocation.php')
     .then(response => response.json())
     .then(data => {
       // Si el enlace de Google Maps existe en los datos recibidos
