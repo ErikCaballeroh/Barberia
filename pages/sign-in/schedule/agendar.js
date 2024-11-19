@@ -50,25 +50,18 @@ function getServiceDays() {
         url: "get_service_days.php",
         type: "GET",
         dataType: "json",
-        data: { barber_id: 1 },
+        data: { barber_id: $("#select-sucursales").val() },
         crossDomain: true
     }).done(function (result) {
-        console.log($("#select-sucursales").val())
-        console.log(result)
         let disableDays = []
 
-        // Recorrer la respuesta para identificar días deshabilitados
-        result.forEach((daysArray) => {
-            daysArray.forEach((day, i) => {
-                if (day === '0' && !disableDays.includes(i + 1)) {
-                    disableDays.push(i + 1);
-                }
-            });
-        });
+        // Llenar los dias desabilitados
+        result.forEach(function (el, i) {
+            if (el === "0") disableDays.push(i + 1)
+        })
 
-        console.log(disableDays)
-        // Cambiar configuracion del datepicker
-        $("#datepicker").pickadate('picker').set('disable', disableDays);
+        // Desabilitar los dias del datepicker
+        $("#datepicker").pickadate("picker").set("disable", disableDays)
     }).fail(function (xhr, status, error) {
         Swal.fire({
             icon: "error",
@@ -83,15 +76,36 @@ function getOpenCloseTime() {
         url: "get_open_close_time.php",
         type: "GET",
         dataType: "json",
+        data: { id_barber: $("#select-sucursales").val() },
         crossDomain: true
     }).done(function (result) {
         console.log(result)
 
-        $('#timepicker').pickatime({
-            interval: 60,
-            min: [result.opening_hour, 0],
-            max: [result.closing_hour, 0]
-        })
+        // Se establecen las horas segun el horario de la barberia
+        $("#timepicker").pickatime("picker").set("min", [result.opening_hour, 0]);
+        $("#timepicker").pickatime("picker").set("max", [result.closing_hour, 0]);
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    })
+}
+
+function blockFulLHours() {
+    $.ajax({
+        url: "get_full_hours.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+            id_barber: $("#select-sucursales").val(),
+            date: $("#datepicker").val()
+        },
+        crossDomain: true
+    }).done(function (blokedHours) {
+        console.log(blokedHours)
+        $("#timepicker").pickatime("picker").set("disable", blokedHours);
     }).fail(function (xhr, status, error) {
         Swal.fire({
             icon: "error",
@@ -104,9 +118,8 @@ function getOpenCloseTime() {
 $(document).ready(function () {
     getBarbers()
     getServices()
-    // getServiceDays()
-    getOpenCloseTime()
 
+    // Generamos un pickadate
     $("#datepicker").pickadate({
         monthsFull: [
             'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -125,18 +138,39 @@ $(document).ready(function () {
         today: 'Hoy',
         clear: 'Limpiar',
         close: 'Cerrar',
-        format: 'dd/mm/yyyy',
+        format: 'yyyy-mm-dd',
     });
 
-    // $("#date-control").hide()
-    $("#time-control").hide()
+    // Desactivamos el pickadate
+    $("#datepicker").pickadate("picker").set("disable", true);
+
+    // Generamos un pickatime
+    $('#timepicker').pickatime({
+        interval: 60,
+    })
+
+    // Desactivamos un pickatime
+    $("#timepicker").pickatime("picker").set("disable", true);
 });
 
+// Codigo a ejecutar al elegir sucursal
 $("#select-sucursales").change(function () {
+
     if ($(this).val() !== "") {
-        $("#date-control").show()
+        // Recive el valor del select y habilita los campos de fecha y hora
+        $("#datepicker").pickadate("picker").set("enable", true);
         getServiceDays()
+
+        $("#timepicker").pickatime("picker").set("enable", true);
+        getOpenCloseTime()
     } else {
-        $("#date-control").hide()
+        // Si no se elige una sucursal se desactivan los campos de fecha y hora
+        $("#datepicker").pickadate("picker").set("disable", true);
+        $("#timepicker").pickatime("picker").set("disable", true);
     }
+})
+
+$("#datepicker").change(function () {
+    $("#timepicker").pickatime('picker').set('disable', false)
+    blockFulLHours()
 })

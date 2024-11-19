@@ -6,7 +6,7 @@ session_start();
 
 // Verificar si el usuario tiene el rol adecuado (rol 2 = cliente)
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {
-    // Si no es cliente, redirigir a la página de inicio
+    // Si no es cliente, redirigir a la página de sinicio
     header('Location: /barberia/index.php');
     exit();
 }
@@ -23,7 +23,7 @@ $barberId = intval($_GET['barber_id']); // Asegurarse de que sea un entero
 include '../conecction.php';
 
 // Consulta para obtener el campo service_days de la barbería específica
-$sqlServiceDays = "SELECT service_days FROM barbers WHERE id = ?";
+$sqlServiceDays = "SELECT service_days FROM barbers WHERE id_barber = ?";
 $stmt = $conn->prepare($sqlServiceDays);
 $stmt->bind_param("i", $barberId); // Asociar el ID de la barbería como parámetro
 $stmt->execute();
