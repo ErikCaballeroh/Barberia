@@ -79,7 +79,6 @@ function getOpenCloseTime() {
         data: { id_barber: $("#select-sucursales").val() },
         crossDomain: true
     }).done(function (result) {
-        console.log(result)
 
         // Se establecen las horas segun el horario de la barberia
         $("#timepicker").pickatime("picker").set("min", [result.opening_hour, 0]);
@@ -104,8 +103,45 @@ function blockFulLHours() {
         },
         crossDomain: true
     }).done(function (blokedHours) {
-        console.log(blokedHours)
         $("#timepicker").pickatime("picker").set("disable", blokedHours);
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    })
+}
+
+function addAppointment() {
+    const datetime = $("#datepicker").val() + " " + $("#timepicker").val() + ":00"
+
+    const appointmentData = {
+        id_barber: $("#select-sucursales").val(),
+        id_service: $("#select-service").val(),
+        appointment_datetime: datetime
+    }
+
+    $.ajax({
+        url: "add_appointment.php",
+        type: "GET",
+        dataType: "json",
+        data: appointmentData,
+        crossDomain: true
+    }).done(function (response) {
+        if (response.success) {
+            Swal.fire({
+                title: "Actualizado!",
+                text: response.success,
+                icon: "success"
+            });
+        } else if (response.error) {
+            Swal.fire({
+                title: "Error!",
+                text: response.error,
+                icon: "error"
+            });
+        }
     }).fail(function (xhr, status, error) {
         Swal.fire({
             icon: "error",
@@ -147,6 +183,7 @@ $(document).ready(function () {
     // Generamos un pickatime
     $('#timepicker').pickatime({
         interval: 60,
+        format: 'HH:i'
     })
 
     // Desactivamos un pickatime
@@ -173,4 +210,24 @@ $("#select-sucursales").change(function () {
 $("#datepicker").change(function () {
     $("#timepicker").pickatime('picker').set('disable', false)
     blockFulLHours()
+})
+
+$("#appointmentForm").submit(function (e) {
+    e.preventDefault()
+
+    Swal.fire({
+        title: "Agendar cita",
+        text: "Esta seguro de que desea agendar cita?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            addAppointment()
+            e.reset()
+        }
+    });
 })
