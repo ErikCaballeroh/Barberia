@@ -105,55 +105,53 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <div class="d-flex flex-column min-vh-100">
         <main class="flex-grow-1">
             <div class="container my-3">
-             <!-- Citas Disponibles -->
-             <div class="col-12 col-lg-6 order-2 order-lg-1">
-                    <h1 class="mb-4 text-center">Tus Citas</h1>
-                    <div id="citas-container" class="row g-4">
-                        <!-- Aquí se insertarán dinámicamente las citas como tarjetas -->
+                <div class="row">
+                    <!-- Citas Disponibles -->
+                    <div class="col-12 col-lg-6 order-1 order-lg-1 px-4 py-3">
+                        <h2 class="fs-4 fw-bold mb-3">Tus Citas</h2>
+                        <div id="citas-container" class="row g-4">
+                            <!-- Aquí se insertarán dinámicamente las citas como tarjetas -->
+                        </div>
                     </div>
-                </div>
-            
-                <div class="row g-4">
+
                     <!-- Formulario para Agendar Cita -->
-                    <form class="col-12 col-md-6 bg-white px-5 order-1 order-lg-2" id="appointmentForm">
-                        <h2 class="fa-1 fw-bold mb-3">
-                            Agendar cita
-                        </h2>
-                        <div class="mb-3 row">
-                            <label for="barber" class="form-label fst-italic">Sucursal</label>
-                            <select name="barber" class="form-select py-2 border border-dark" id="select-sucursales">
-                                <option value="" default>Selecciona una sucursal</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3 row" id="service-control">
-                            <label for="service" class="form-label fst-italic">Servicio</label>
-                            <select name="service" class="form-select py-2 border border-dark" id="select-service">
-                                <option value="" default>Selecciona un servicio</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3 row" id="date-control">
-                            <label for="appointment-date" class="form-label fst-italic">Fecha</label>
-                            <input type="text" name="appointment-date" class="form-control py-2 border border-dark"
-                                placeholder='Selecciona una fecha' id="datepicker">
-                        </div>
-
-                        <div class="mb-3 row" id="time-control">
-                            <label for="appointment-time" class="form-label fst-italic">Hora</label>
-                            <input type="text" name="appointment-time" class="form-control py-2 border border-dark"
-                                placeholder='Selecciona una hora (Varia segun disponibilidad)' id="timepicker">
-                        </div>
-
-                        <div class="row mt-5">
-                            <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
-                        </div>
-                    </form>
+                    <div class="col-12 col-lg-6 order-2 order-lg-2">
+                        <form class="bg-white px-4 py-3" id="appointmentForm">
+                            <h2 class="fs-4 fw-bold mb-3">Agendar cita</h2>
+                            <div class="mb-3">
+                                <label for="barber" class="form-label fst-italic">Sucursal</label>
+                                <select name="barber" class="form-select py-2 border border-dark" id="select-sucursales">
+                                    <option value="" default>Selecciona una sucursal</option>
+                                </select>
+                            </div>
+                            <div class="mb-3" id="service-control">
+                                <label for="service" class="form-label fst-italic">Servicio</label>
+                                <select name="service" class="form-select py-2 border border-dark" id="select-service">
+                                    <option value="" default>Selecciona un servicio</option>
+                                </select>
+                            </div>
+                            <div class="mb-3" id="date-control">
+                                <label for="appointment-date" class="form-label fst-italic">Fecha</label>
+                                <input type="text" name="appointment-date" class="form-control py-2 border border-dark"
+                                    placeholder="Selecciona una fecha" id="datepicker">
+                            </div>
+                            <div class="mb-3" id="time-control">
+                                <label for="appointment-time" class="form-label fst-italic">Hora</label>
+                                <input type="text" name="appointment-time" class="form-control py-2 border border-dark"
+                                    placeholder="Selecciona una hora (Varia segun disponibilidad)" id="timepicker">
+                            </div>
+                            <div class="mt-4">
+                                <input type="submit" value="Realizar cambios" class="btn btn-dark w-100 py-2 fw-bold">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
+
+
             <!-- Citas Disponibles -->
-            
+
         </main>
 
         <!-- Footer -->
@@ -174,8 +172,8 @@ session_start(); // Iniciar la sesión para acceder a las variables de sesión
     <script src="/barberia/JS/bootstrap.bundle.min.js"></script>
     <script src="/Barberia/pickadate/pickadate.js"></script>
     <script src="/Barberia/js/sweetalert2.all.min.js"></script>
-    <script src="agendar.js"></script>
-    <script src="look_citas.js"></script>
+    <script type="module" src="agendar.js"></script>
+    <script type="module" src="look_citas.js"></script>
 
 
     <script>

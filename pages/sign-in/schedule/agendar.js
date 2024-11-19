@@ -1,3 +1,5 @@
+import { cargarCitas } from "./look_citas.js";
+
 function getBarbers() {
     $.ajax({
         url: "sucursales.php",
@@ -142,6 +144,8 @@ function addAppointment() {
                 icon: "error"
             });
         }
+
+        cargarCitas()
     }).fail(function (xhr, status, error) {
         Swal.fire({
             icon: "error",
