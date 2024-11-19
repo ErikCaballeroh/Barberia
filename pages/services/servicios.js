@@ -1,42 +1,56 @@
-//ajax
-fetch('get_services.php')
-    .then(response => response.json())
-    .then(data => {
-        // Selecciona los contenedores correspondientes
-        const serviciosIndividualesList = document.querySelector('.service-list');
-        const serviciosAdicionalesList = document.getElementById('serviciosAdicionalesList');
-        const paquetesList = document.getElementById('paquetesList');
+function getServices() {
+    $.ajax({
+        url: "get_services.php",
+        type: "GET",
+        dataType: "json",
+        crossDomain: true
+    }).done(function (servicesData) {
 
-        // Verificar si los contenedores existen
-        if (!serviciosIndividualesList) {
-            console.error('Contenedor de "Servicios Individuales" no encontrado.');
-        }
-        if (!serviciosAdicionalesList) {
-            console.error('Contenedor de "Servicios Adicionales" no encontrado.');
-        }
-        if (!paquetesList) {
-            console.error('Contenedor de "Paquetes" no encontrado.');
-        }
+        // Referencia a la sección de servicios
+        const $servicesSection = $("#services-section").addClass("container");
 
-        // Itera sobre cada categoría y servicio
-        data.forEach(category => {
-            // Clasificar por categoría
+        // Iterar sobre las categorías
+        servicesData.forEach(category => {
+            // Crear el contenedor de la categoría
+            const $categoryContainer = $("<div>").addClass("mb-5");
+
+            // Título de la categoría con estilo
+            const $categoryHeader = $("<div>")
+                .addClass("category-header border-bottom pb-2 mb-3")
+                .append(`<h3 class="text-dark">${category.category_name}</h3>`);
+
+            // Contenedor para los servicios
+            const $servicesList = $("<div>").addClass("row g-3"); // g-3 para espacios uniformes
+
+            // Iterar sobre los servicios
             category.services.forEach(service => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                <strong>${service.service_name}</strong><br>
-                <p>${service.description}</p>
-                <p>Precio: $${service.price}</p>
-            `;
-
-                if (category.category_name === "Servicios Individuales") {
-                    serviciosIndividualesList.appendChild(listItem);
-                } else if (category.category_name === "Servicios Adicionales") {
-                    serviciosAdicionalesList.appendChild(listItem);
-                } else if (category.category_name === "Paquetes") {
-                    paquetesList.appendChild(listItem);
-                }
+                const $serviceCard = $("<div>").addClass("col-md-4");
+                $serviceCard.html(`
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">${service.service_name}</h5>
+                        <p class="card-text text-muted">${service.description || "Sin descripción disponible"}</p>
+                        <p class="card-text text-success"><strong>Precio:</strong> $${service.price}</p>
+                    </div>
+                </div>
+            `);
+                $servicesList.append($serviceCard);
             });
+
+            // Agregar todo al contenedor principal
+            $categoryContainer.append($categoryHeader, $servicesList);
+            $servicesSection.append($categoryContainer);
         });
-    })
-    .catch(error => console.error('Error:', error));
+
+    }).fail(function (xhr, status, error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error,
+        });
+    });
+}
+
+$(document).ready(function () {
+    getServices();
+});

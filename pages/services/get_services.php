@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+
+// Verificar si el usuario tiene el rol adecuado (rol 2 = cliente)
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 2) {
+    // Si no es cliente, redirigir a la página de inicio
+    header('Location: /barberia/index.php');
+    exit();
+}
+
 // Descomentar estas líneas para depurar
 header("Content-Type: application/json");
 

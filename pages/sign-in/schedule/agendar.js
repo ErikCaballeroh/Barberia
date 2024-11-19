@@ -1,4 +1,4 @@
-import { cargarCitas } from "./look_citas.js";
+import { cargarCitas } from "./look_citas";
 
 function getBarbers() {
     $.ajax({
@@ -145,7 +145,7 @@ function addAppointment() {
             });
         }
 
-        cargarCitas()
+        cargarCitas
     }).fail(function (xhr, status, error) {
         Swal.fire({
             icon: "error",
