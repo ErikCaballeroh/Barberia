@@ -196,6 +196,11 @@ $(document).ready(function () {
 
 // Codigo a ejecutar al elegir sucursal
 $("#select-sucursales").change(function () {
+    // REQUERIMIENTO 1 LIMPIAR FORMULARIO (excepto el campo de sucursal)
+    $("#appointmentForm").find("input, select, textarea").not("#select-sucursales").val("");
+
+    // También puedes resetear cualquier estado o validación si es necesario
+    $("#appointmentForm").find("input, select, textarea").not("#select-sucursales").removeClass("is-valid is-invalid");
 
     if ($(this).val() !== "") {
         // Recive el valor del select y habilita los campos de fecha y hora
@@ -209,7 +214,7 @@ $("#select-sucursales").change(function () {
         $("#datepicker").pickadate("picker").set("disable", true);
         $("#timepicker").pickatime("picker").set("disable", true);
     }
-})
+});
 
 $("#datepicker").change(function () {
     $("#timepicker").pickatime('picker').set('disable', false)
