@@ -1,48 +1,34 @@
 <?php
 session_start();
-//conexion a la base de datos
-include 'conexion.php';
-
-//variable de registro con validacion para evitar ataques
-$correo = mysqli_real_escape_string($conexion, $_POST['correo']);
-$contra = $_POST['contra'];
-
-
-//comparar las variables
-$validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE email='$correo' ");
-
-//validar login
-if (mysqli_num_rows($validar_login) > 0) {
-    $usuario = mysqli_fetch_assoc($validar_login);
-
-    // Verificar la contraseña ingresada con el hash de la base de datos
-    if (password_verify($contra, $usuario['password'])) {
-        $_SESSION['id'] = $usuario['id_user'];
-        $_SESSION['usuario'] = $correo;
-        $_SESSION['username'] = $usuario['username'];
-        $_SESSION['role'] = $usuario['id_role'];
-        if ($_SESSION['role'] == 1) {
-            // Redirige al dashboard si es admin
-            header("Location: /barberia/pages/dashboard/dashboard.php");
-        } else {
-            // Redirige al index si no es admin
-            header("Location: /barberia/index.php");
-        }
-        exit;
-    } else {
-        // Contraseña incorrecta
-        echo '
-                <script>
-                    alert("Contraseña incorrecta, verifica los datos.");
-                    window.location = "/barberia/index.php";
-                </script>';
-        exit;
-    }
-} else {
-    // Usuario no encontrado
-    echo ' 
-            <script>alert("Usuario no existe, Verifica los datos");
-            window.location = "/barberia/index.php";
-            </script>';
-    exit;
+if (isset($_SESSION['usuario'])) {
+    header("Location: /barberia/pages/dashboard/dashboard.php");
+    exit();
 }
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <form action="../../includes/registrar_usuario.php" method="POST">
+        <h2>Registro</h2>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" name="nombre" required>
+        
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" required>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required>
+
+        <button type="submit">Registrarse</button>
+
+        <p>¿Ya tienes cuenta? <a href="../login/sign-in-corregido.php">Inicia sesión</a></p>
+    </form>
+</body>
+</html>
